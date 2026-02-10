@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servizi</title>
+    <title>Servizi - Zampe in Famiglia</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lora:wght@400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/services-menu.css">
 </head>
 
 <body>
@@ -30,37 +31,155 @@
     </nav>
 
     <!-- Header/Banner -->
-    <header>
-        <div class="paw">🐾</div>
-        <div class="paw">🐾</div>
-        <div class="paw">🐾</div>
 
-        <h2>Benvenuto nella sezione Servizi & Prezzi</h2>
-    </header>
+    <div class="paw">🐾</div>
+    <div class="paw">🐾</div>    
+
+    <main class="services-container">
+        
+        <div class="services-menu">
+            <!-- Left sidebar with categories -->
+            <aside class="services-sidebar">
+                <div class="service-category" data-category="passeggiate">
+                    <span class="category-name">Passeggiate</span>
+                    <span class="category-count">(3)</span>
+                </div>
+
+                <div class="service-category" data-category="giorni-con-noi">
+                    <span class="category-name">Giorni Con Noi</span>
+                    <span class="category-count">(2)</span>
+                </div>
+
+                <div class="service-category" data-category="compagnia">
+                    <span class="category-name">Compagnia A Domicilio</span>
+                    <span class="category-count">(1)</span>
+                </div>
+            </aside>
+
+            <!-- Right content area with service details -->
+            <section class="services-content">
+                <!-- Passeggiate Services -->
+                <div class="service-group" data-group="passeggiate">
+                    <div class="service-item">
+                        <div class="service-header">
+                            <h3 class="service-title">Passeggiata Breve</h3>
+                            <span class="service-price">€ 15</span>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">30 min</span>
+                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-30')">
+                                Dettagli importanti del trattamento
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-header">
+                            <h3 class="service-title">Passeggiata Standard</h3>
+                            <span class="service-price">€ 25</span>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">1 ora</span>
+                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-60')">
+                                Dettagli importanti del trattamento
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-header">
+                            <h3 class="service-title">Passeggiata Lunga</h3>
+                            <span class="service-price">€ 35</span>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">1 ora 30 min</span>
+                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-90')">
+                                Dettagli importanti del trattamento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giorni Con Noi Services -->
+                <div class="service-group hidden" data-group="giorni-con-noi">
+                    <div class="service-item">
+                        <div class="service-header">
+                            <h3 class="service-title">Giorno Con Noi</h3>
+                            <span class="service-price">€ 40</span>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">8 ore (diurno)</span>
+                            <button class="service-info-btn" onclick="showServiceDetails('giorno')">
+                                Dettagli importanti del trattamento
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-header">
+                            <h3 class="service-title">Giorno E Notte Con Noi</h3>
+                            <span class="service-price">€ 60</span>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">24 ore</span>
+                            <button class="service-info-btn" onclick="showServiceDetails('giorno-notte')">
+                                Dettagli importanti del trattamento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compagnia A Domicilio Services -->
+                <div class="service-group hidden" data-group="compagnia">
+                    <div class="service-item">
+                        <div class="service-header">
+                            <h3 class="service-title">Compagnia A Domicilio</h3>
+                            <span class="service-price">€ 20/ora</span>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">Min. 2 ore</span>
+                            <button class="service-info-btn" onclick="showServiceDetails('compagnia-dom')">
+                                Dettagli importanti del trattamento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Service Details Modal -->
+    <div class="service-modal" id="serviceModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeServiceDetails()">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <script src="../js/script.js"></script>
-    <script src="../js/booking.js"></script>
-
+    <script src="../js/services-menu.js"></script>
 </body>
+
 <!-- Theme Switcher Compatto -->
 <div class="theme-switcher-compact">
     <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
         🎨
     </button>
-    
+
     <!-- Menu a colonna (nascosto di default) -->
     <div class="theme-options-column" id="theme-column">
         <!-- Divider -->
         <div class="option-divider">Tema</div>
-        
+
         <!-- Dark/Light Toggle -->
         <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
             🌙
         </button>
-        
+
         <!-- Divider -->
         <div class="option-divider">Palette</div>
-        
+
         <!-- Palette Buttons -->
         <button onclick="changePalette('human')" data-palette="human" class="option-btn active" title="Modalità Umano">
             👤

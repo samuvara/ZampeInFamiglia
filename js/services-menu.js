@@ -1,5 +1,7 @@
 // Services Menu JavaScript
 
+const adviceForPet = "<br><p><strong>ATTENZIONE! Dare sempre i riferimenti di veterinario di fiducia e libretto medico del pet in modo da poter gestire eventuali emergenze al meglio</strong></p>";
+
 // Service details data
 const serviceDetails = {
     'passeggiata-30': {
@@ -21,6 +23,7 @@ const serviceDetails = {
                 <li>Possibilità di passeggiate di gruppo o individuali</li>
                 <li>Prezzi speciali per pacchetti settimanali</li>
             </ul>
+            ${adviceForPet}
         `
     },
     'passeggiata-60': {
@@ -43,6 +46,7 @@ const serviceDetails = {
                 <li>Include tempo di gioco al parco</li>
                 <li>Sconti disponibili per abbonamenti mensili</li>
             </ul>
+            ${adviceForPet}
         `
     },
     'passeggiata-90': {
@@ -66,6 +70,7 @@ const serviceDetails = {
                 <li>Percorsi variati per stimolare il cane</li>
                 <li>Possibilità di attività specifiche su richiesta</li>
             </ul>
+            ${adviceForPet}
         `
     },
     'giorno': {
@@ -90,6 +95,7 @@ const serviceDetails = {
                 <li>Ambiente sicuro e familiare</li>
                 <li>Prezzi speciali per più giorni consecutivi</li>
             </ul>
+            ${adviceForPet}
         `
     },
     'giorno-notte': {
@@ -115,6 +121,7 @@ const serviceDetails = {
                 <li>Check-in dalle 16:00, check-out entro le 10:00</li>
                 <li>Sconti per soggiorni di più giorni</li>
             </ul>
+            ${adviceForPet}
         `
     },
     'compagnia-dom': {
@@ -141,6 +148,7 @@ const serviceDetails = {
                 <li>Possibilità di visite multiple al giorno</li>
                 <li>Aggiornamenti via foto dopo ogni visita</li>
             </ul>
+            ${adviceForPet}
         `
     }
 };

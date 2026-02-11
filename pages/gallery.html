@@ -1,3 +1,6 @@
+<!-- THIS PAGE IS UNUSED BECAUSE OF THE LOAD OF THE GALLERY IN THE HOMEPAGE -->
+<!-- REMAIN HERE JUST FOR THE POSSIBLE FUTURE UPDATE WITH MORE FUNCTIONALLITY-->
+
 <!DOCTYPE html>
 <html lang="it" data-palette="human" data-theme="light">
 
@@ -24,22 +27,65 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="services_prices.html">Servizi</a></li>
             <li><a href="booking.html">Prenotazione</a></li>
-            <li><a href="gallery.html">Galleria</a></li>
+            <!-- <li><a href="gallery.html">Galleria</a></li> -->
             <li><a href="contacts.html">Contatti</a></li>
         </ul>
     </nav>
 
     <!-- Header/Banner -->
-    <header>
+    
         <div class="paw">🐾</div>
         <div class="paw">🐾</div>
         <div class="paw">🐾</div>
+        
+ 
 
-        <h2>Benvenuto nella sezione Galleria</h2>
-    </header>
+    <!-- Main Content -->
+    <main class="gallery-page">
+        
+        <!-- Photo Slider Section -->
+        <section class="photo-slider-section">
+            <div class="content">
+                <div class="slider-container">
+                    <!-- Slider Track (contiene tutte le foto) -->
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Le foto saranno caricate dinamicamente via JavaScript -->
+                    </div>
+
+                    <!-- Previous Button -->
+                    <button class="slider-nav-btn slider-prev" id="sliderPrev" title="Foto precedente">
+                        <span>&#10094;</span>
+                    </button>
+
+                    <!-- Next Button -->
+                    <button class="slider-nav-btn slider-next" id="sliderNext" title="Foto successiva">
+                        <span>&#10095;</span>
+                    </button>
+
+                    <!-- Dots Indicators -->
+                    <div class="slider-dots" id="sliderDots"></div>
+                </div>
+
+                <!-- Photo Counter -->
+                <div class="photo-counter">
+                    <span id="currentPhotoIndex">1</span> / <span id="totalPhotos">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox per foto ingrandita -->
+        <div class="photo-lightbox" id="photoLightbox">
+            <div class="lightbox-content">
+                <img id="lightboxImage" src="" alt="Foto in primo piano">
+                <div class="lightbox-caption" id="lightboxCaption"></div>
+                
+            </div>
+        </div>
+    </main>
 
     <script src="../js/script.js"></script>
     <script src="../js/booking.js"></script>
+    <script src="../js/gallery.js"></script>
 
 </body>
 <!-- Theme Switcher Compatto -->

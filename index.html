@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lora:wght@400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/services-menu.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="pages/services_prices.html">Servizi</a></li>
             <li><a href="pages/booking.html">Prenotazione</a></li>
-            <li><a href="pages/gallery.html">Galleria</a></li>
+            <!-- <li><a href="pages/gallery.html">Galleria</a></li> -->
             <li><a href="pages/contacts.html">Contatti</a></li>
         </ul>
     </nav>
@@ -52,11 +53,59 @@
         </p>
         <p>
             Dalle passeggiate giornaliere alle visite a domicilio, siamo qui per rendere
-            la vita del tuo pet più felice, anche quando non puoi essere con lui.
+            la vita del tuo pet più felice, anche quando non puoi essere con lui, rendendoti partecipe tramite
+            le foto che costantemente ti manderemo nel mentre che sarà in nostra compagnia!
         </p>
+
+        <br><h3 class="centered-text">Gelleria fotografica dei nostri amici animali!</h3>
+        <div class="gallery-page">
+
+            <!-- Photo Slider Section -->
+            <section class="photo-slider-section">
+                <div class="content">
+                    <div class="slider-container">
+                        <!-- Slider Track (contiene tutte le foto) -->
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Le foto saranno caricate dinamicamente via JavaScript -->
+                        </div>
+    
+                        <!-- Previous Button -->
+                        <button class="slider-nav-btn slider-prev" id="sliderPrev" title="Foto precedente">
+                            <span>&#10094;</span>
+                        </button>
+    
+                        <!-- Next Button -->
+                        <button class="slider-nav-btn slider-next" id="sliderNext" title="Foto successiva">
+                            <span>&#10095;</span>
+                        </button>
+    
+                        <!-- Dots Indicators -->
+                        <div class="slider-dots" id="sliderDots"></div>
+                    </div>
+    
+                    <!-- Photo Counter -->
+                    <div class="photo-counter">
+                        <span id="currentPhotoIndex">1</span> / <span id="totalPhotos">0</span>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Lightbox per foto ingrandita -->
+            <div class="photo-lightbox" id="photoLightbox">
+                <div class="lightbox-content">
+                    <img id="lightboxImage" src="" alt="Foto in primo piano">
+                    <div class="lightbox-caption" id="lightboxCaption"></div>
+                    
+                </div>
+            </div>
+        </div>
+
     </main>
     <script src="js/script.js"></script>
     <script src="js/booking.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/services-menu.js"></script>
+
 </body>
 <!-- Theme Switcher Compatto -->
 <div class="theme-switcher-compact">

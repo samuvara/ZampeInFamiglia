@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang="zim_title_booking">Prenotazione - Zampe in Famiglia</title>
+    <title data-lang="zim_title_booking"></title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Lora:wght@400;600&display=swap"
@@ -27,11 +27,11 @@
     <!-- Side Navigation -->
     <nav class="side-nav">
         <ul>
-            <li><a href="../index.html" data-lang="nav_home">Home</a></li>
-            <li><a href="services_prices.html" data-lang="nav_services">Servizi</a></li>
-            <li><a href="booking.html" data-lang="nav_booking">Prenotazione</a></li>
+            <li><a href="../index.html" data-lang="nav_home"></a></li>
+            <li><a href="services_prices.html" data-lang="nav_services"></a></li>
+            <li><a href="booking.html" data-lang="nav_booking"></a></li>
             <!-- <li><a href="pages/gallery.html">Galleria</a></li> -->
-            <li><a href="contacts.html" data-lang="nav_contacts">Contatti</a></li>
+            <li><a href="contacts.html" data-lang="nav_contacts"></a></li>
         </ul>
     </nav>
 
@@ -105,15 +105,13 @@
         <!-- Calendar Section -->
         <section class="calendar-section">
             <div class="content">
-                <h2 data-lang="calendar_title">📅 Calendario Prenotazioni</h2>
-                <p class="section-description" data-lang="calendar_description">
-                    Seleziona la data e l'orario che preferisci per il servizio di dog sitting
-                </p>
+                <h2 data-lang="calendar_title"></h2>
+                <p class="section-description" data-lang="calendar_description"></p>
 
                 <div class="calendar-wrapper">
                     <div id="loading-calendar" class="loading">
                         <div class="spinner"></div>
-                        <p data-lang="calendar_loading">Caricamento calendario...</p>
+                        <p data-lang="calendar_loading"></p>
                     </div>
 
                     <iframe id="google-calendar"
@@ -131,10 +129,8 @@
         <!-- Map Section -->
         <section class="map-section">
             <div class="content">
-                <h2 data-lang="map_title">📍 Dove Ci Troviamo</h2>
-                <p class="section-description" data-lang="" map_description>
-                    Vieni a trovarci! Siamo in zona McDonald's di Via Francesco Baracca, Firenze
-                </p>
+                <h2 data-lang="map_title"></h2>
+                <p class="section-description" data-lang="" map_description></p>
 
                 <div class="map-wrapper">
                     <iframe
@@ -147,27 +143,27 @@
                         <div class="info-card">
                             <span class="icon">📍</span>
                             <div>
-                                <h4 data-lang="map_address_label">Indirizzo</h4>
-                                <p data-lang="map_address_line1">Zona McDonald's</p>
-                                <p data-lang="map_address_line2">Via Francesco Baracca, Firenze</p>
+                                <h4 data-lang="map_address_label"></h4>
+                                <p data-lang="map_address_line1"></p>
+                                <p data-lang="map_address_line2"></p>
                             </div>
                         </div>
 
                         <div class="info-card">
                             <span class="icon">🕐</span>
                             <div>
-                                <h4 data-lang="map_hours_label">Orari</h4>
-                                <p data-lang="map_hours_weekdays">Lun-Sab: 6:30 - 19:00</p>
-                                <p data-lang="map_hours_sunday">Domenica: Su prenotazione</p>
+                                <h4 data-lang="map_hours_label"></h4>
+                                <p data-lang="map_hours_weekdays"></p>
+                                <p data-lang="map_hours_sunday"></p>
                             </div>
                         </div>
 
                         <div class="info-card">
                             <span class="icon">📞</span>
                             <div>
-                                <h4 data-lang="map_contacts_labels">Contatti</h4>
-                                <p data-lang="map_contacts_email">Email: zampeinfamiglia@gmail.com</p>
-                                <p data-lang="map_contacts_phone">Tel: +39 123 456 7890</p>
+                                <h4 data-lang="map_contacts_labels"></h4>
+                                <p data-lang="map_contacts_email"></p>
+                                <p data-lang="map_contacts_phone"></p>
                             </div>
                         </div>
                     </div>
@@ -232,6 +228,10 @@
         </div>
     </div> -->
 
+    <!-- Scripts -->
+    <script src="../js/booking.js"></script>
+    <script src="../js/script.js"></script>
+
 </body>
 
 <div class="lang-switcher">
@@ -244,7 +244,7 @@
 
     <!-- Menu a colonna -->
     <div class="lang-options" id="lang-column">
-        <div class="lang-divider">Lingua</div>
+        <div class="lang-divider" data-lang="lang"></div>
 
         <button class="lang-btn active" data-lang-code="it" data-label="Italiano" onclick="switchLanguage('it', '🇮🇹')"
             title="Italiano">
@@ -272,7 +272,7 @@
     <!-- Menu a colonna (nascosto di default) -->
     <div class="theme-options-column" id="theme-column">
         <!-- Divider -->
-        <div class="option-divider">Tema</div>
+        <div class="option-divider" data-lang="theme_label"></div>
 
         <!-- Dark/Light Toggle -->
         <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
@@ -280,7 +280,7 @@
         </button>
 
         <!-- Divider -->
-        <div class="option-divider">Palette</div>
+        <div class="option-divider" data-lang="palette_label"></div>
 
         <!-- Palette Buttons -->
         <button onclick="changePalette('human')" data-palette="human" class="option-btn active" title="Modalità Umano">
@@ -297,9 +297,5 @@
         </button>
     </div>
 </div>
-
-    <!-- Scripts -->
-    <script src="../js/booking.js"></script>
-    <script src="../js/script.js"></script>
 
 </html>

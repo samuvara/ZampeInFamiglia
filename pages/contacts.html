@@ -21,11 +21,11 @@
     <!-- Side Navigation -->
     <nav class="side-nav" id="sideNav">
         <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="services_prices.html">Servizi</a></li>
-            <li><a href="booking.html">Prenotazione</a></li>
-            <!-- <li><a href="gallery.html">Galleria</a></li> -->
-            <li><a href="contacts.html">Contatti</a></li>
+            <li><a href="../index.html" data-lang="nav_home"></a></li>
+            <li><a href="services_prices.html" data-lang="nav_services"></a></li>
+            <li><a href="booking.html" data-lang="nav_booking"></a></li>
+            <!-- <li><a href="pages/gallery.html">Galleria</a></li> -->
+            <li><a href="contacts.html" data-lang="nav_contacts"></a></li>
         </ul>
     </nav>
 
@@ -53,7 +53,7 @@
 
     <!-- Menu a colonna -->
     <div class="lang-options" id="lang-column">
-        <div class="lang-divider">Lingua</div>
+        <div class="lang-divider" data-lang="lang"></div>
 
         <button class="lang-btn active" data-lang-code="it" data-label="Italiano" onclick="switchLanguage('it', '🇮🇹')"
             title="Italiano">
@@ -81,7 +81,7 @@
     <!-- Menu a colonna (nascosto di default) -->
     <div class="theme-options-column" id="theme-column">
         <!-- Divider -->
-        <div class="option-divider">Tema</div>
+        <div class="option-divider" data-lang="theme_label"></div>
 
         <!-- Dark/Light Toggle -->
         <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
@@ -89,7 +89,7 @@
         </button>
 
         <!-- Divider -->
-        <div class="option-divider">Palette</div>
+        <div class="option-divider" data-lang="palette_label"></div>
 
         <!-- Palette Buttons -->
         <button onclick="changePalette('human')" data-palette="human" class="option-btn active" title="Modalità Umano">

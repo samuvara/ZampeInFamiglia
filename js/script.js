@@ -269,7 +269,8 @@ function switchLanguage(lang, flag) {
  * Carica il file JSON della lingua e applica le traduzioni
  */
 function loadLanguageFile(lang) {
-    const filePath = `../languages/${lang}.json`;
+    // Path assoluto: funziona da qualsiasi pagina del sito
+    const filePath = `/languages/${lang}.json`;
     fetch(filePath)
         .then(response => {
             if (!response.ok) throw new Error(`File non trovato: ${filePath}`);

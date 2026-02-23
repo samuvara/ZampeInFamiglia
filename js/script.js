@@ -9,7 +9,7 @@
 // I commenti seguono la logica passo-passo per facilitarne la manutenzione.
 
 // ----------------------------
-// Funzione: changePalette(palette)
+/* // Funzione: changePalette(palette)
 // Descrizione:
 // Cambia la "palette" (set di variabili CSS) dell'intera pagina.
 // - Imposta l'attributo `data-palette` sull'elemento `:root` (document.documentElement)
@@ -31,7 +31,7 @@ function changePalette(palette) {
     
     // Mostra un piccolo messaggio che conferma il cambio di palette
     showNotification(`Modalità ${getPaletteName(palette)} attivata! 🎨`);
-}
+} */
 
 function toggleThemeSwitcher() {
     const column = document.getElementById('theme-column');
@@ -99,41 +99,40 @@ function changePalette(palette) {
 // - Aggiunge 'active' al bottone corrispondente alla palette selezionata
 // Dettagli implementativi:
 // - Usa selettori semplici basati su attributi onclick presenti nell'HTML
-function updateActiveButton(palette) {
+/* function updateActiveButton(palette) {
     // Rimuove lo stato 'active' da ogni pulsante dentro .palette-switcher
     document.querySelectorAll('.palette-switcher button').forEach(btn => {
         btn.classList.remove('active');
     });
-    
+
     // Cerca il pulsante che invoca changePalette con il valore corrispondente
     // NB: questa tecnica funziona con l'HTML attuale dove i button usano inline onclick
     const activeBtn = document.querySelector(`[onclick="changePalette('${palette}')"]`);
     if (activeBtn) {
         activeBtn.classList.add('active');
     }
-}
+} */
 
 // ----------------------------
 // Inizializzazione all'avvio della pagina
 // - Carica le preferenze salvate in localStorage e le applica
 // - Aggiorna icone e bottoni per rispecchiare le preferenze
 window.addEventListener('DOMContentLoaded', () => {
-    // Recupera la palette e il tema salvati; se mancanti usa valori di default
+    // Tema e palette
     const savedPalette = localStorage.getItem('preferred-palette') || 'human';
     const savedTheme = localStorage.getItem('preferred-theme') || 'light';
-    
-    // Applica gli attributi al documento in modo che il CSS li legga subito
     document.documentElement.setAttribute('data-palette', savedPalette);
     document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    // Aggiorna l'icona del toggle del tema (coerente con lo stato attuale)
+
     const btn = document.getElementById('theme-toggle');
-    if (btn) {
-        btn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
-    
-    // Aggiorna lo stato dei pulsanti delle palette
-    updateActiveButton(savedPalette);
+    if (btn) btn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    document.querySelectorAll('[data-palette]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-palette') === savedPalette);
+    });
+
+    // Lingua
+    initializeLanguage();
 });
 
 // ----------------------------
@@ -232,10 +231,10 @@ if (menuToggle && sideNav) {
  * Apre/chiude il pannello di selezione lingua
  */
 function toggleLangSwitcher() {
-  const column = document.getElementById('lang-column');
-  const mainBtn = document.getElementById('lang-main-toggle');
-  column.classList.toggle('active');
-  mainBtn.classList.toggle('active');
+    const column = document.getElementById('lang-column');
+    const mainBtn = document.getElementById('lang-main-toggle');
+    column.classList.toggle('active');
+    mainBtn.classList.toggle('active');
 }
 
 /**
@@ -247,81 +246,81 @@ function toggleLangSwitcher() {
  * 5. Chiude il pannello
  */
 function switchLanguage(lang, flag) {
-  loadLanguageFile(lang);
-  localStorage.setItem('selectedLanguage', lang);
+    loadLanguageFile(lang);
+    localStorage.setItem('selectedLanguage', lang);
 
-  /* Aggiorna il flag sul bottone principale */
-  const mainBtn = document.getElementById('lang-main-toggle');
-  if (mainBtn) mainBtn.textContent = flag;
+    /* Aggiorna il flag sul bottone principale */
+    const mainBtn = document.getElementById('lang-main-toggle');
+    if (mainBtn) mainBtn.textContent = flag;
 
-  /* Evidenzia il bottone della lingua selezionata */
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang-code') === lang);
-  });
+    /* Evidenzia il bottone della lingua selezionata */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang-code') === lang);
+    });
 
-  /* Chiude il pannello dopo la selezione */
-  setTimeout(() => {
-    document.getElementById('lang-column').classList.remove('active');
-    mainBtn.classList.remove('active');
-  }, 250);
+    /* Chiude il pannello dopo la selezione */
+    setTimeout(() => {
+        document.getElementById('lang-column').classList.remove('active');
+        mainBtn.classList.remove('active');
+    }, 250);
 }
 
 /**
  * Carica il file JSON della lingua e applica le traduzioni
  */
 function loadLanguageFile(lang) {
-  const filePath = `/languages/${lang}.json`;
-  fetch(filePath)
-    .then(response => {
-      if (!response.ok) throw new Error(`File non trovato: ${filePath}`);
-      return response.json();
-    })
-    .then(data => applyTranslations(data))
-    .catch(error => console.error('Errore caricamento lingua:', error));
+    const filePath = `../languages/${lang}.json`;
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) throw new Error(`File non trovato: ${filePath}`);
+            return response.json();
+        })
+        .then(data => applyTranslations(data))
+        .catch(error => console.error('Errore caricamento lingua:', error));
 }
 
 /**
  * Applica le traduzioni a tutti gli elementi con data-lang
  */
 function applyTranslations(translations) {
-  document.querySelectorAll('[data-lang]').forEach(el => {
-    const key = el.getAttribute('data-lang');
-    if (translations[key]) {
-      el.textContent = translations[key];
-    } else {
-      console.warn(`Chiave non trovata: ${key}`);
-    }
-  });
+    document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if (translations[key]) {
+            el.textContent = translations[key];
+        } else {
+            console.warn(`Chiave non trovata: ${key}`);
+        }
+    });
 }
 
 /**
  * Inizializzazione: ripristina la lingua salvata
  */
 function initializeLanguage() {
-  const saved = localStorage.getItem('selectedLanguage') || 'it';
-  const flags = { it: '🇮🇹', en: '🇬🇧', es: '🇪🇸' };
+    const saved = localStorage.getItem('selectedLanguage') || 'it';
+    const flags = { it: '🇮🇹', en: '🇬🇧', es: '🇪🇸' };
 
-  /* Aggiorna il flag del bottone principale senza riaprire il pannello */
-  const mainBtn = document.getElementById('lang-main-toggle');
-  if (mainBtn && flags[saved]) mainBtn.textContent = flags[saved];
+    /* Aggiorna il flag del bottone principale senza riaprire il pannello */
+    const mainBtn = document.getElementById('lang-main-toggle');
+    if (mainBtn && flags[saved]) mainBtn.textContent = flags[saved];
 
-  /* Evidenzia il bottone corretto */
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang-code') === saved);
-  });
+    /* Evidenzia il bottone corretto */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang-code') === saved);
+    });
 
-  /* Carica le traduzioni */
-  loadLanguageFile(saved);
+    /* Carica le traduzioni */
+    loadLanguageFile(saved);
 }
 
 /* Chiudi cliccando fuori dal pannello */
 window.addEventListener('click', function (e) {
-  const switcher = document.querySelector('.lang-switcher');
-  if (switcher && !switcher.contains(e.target)) {
-    document.getElementById('lang-column').classList.remove('active');
-    document.getElementById('lang-main-toggle').classList.remove('active');
-  }
+    const switcher = document.querySelector('.lang-switcher');
+    if (switcher && !switcher.contains(e.target)) {
+        document.getElementById('lang-column').classList.remove('active');
+        document.getElementById('lang-main-toggle').classList.remove('active');
+    }
 });
 
-/* Avvio */
-document.addEventListener('DOMContentLoaded', initializeLanguage);
+/*  Avvio 
+document.addEventListener('DOMContentLoaded', initializeLanguage); */

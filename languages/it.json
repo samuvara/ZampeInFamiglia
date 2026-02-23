@@ -1,0 +1,62 @@
+{
+  "nav_home": "Home",
+  "nav_services": "Servizi",
+  "nav_booking": "Prenotazione",
+  "nav_contacts": "Contatti",
+
+  "zim_title": "Zampe in Famiglia",
+  "zim_title_booking": "Prenotazione - Zampe in Famiglia",
+  "zim_title_services": "Servizi - Zampe in Famiglia",
+  "zim_subtitle": "Pet sitting affidabile per cani, gatti e animali domestici",
+  "booknow": "Prenota Ora",
+
+  "intro_title": "Benvenuto nel nostro servizio",
+  "intro_paragraph1": "Ci prendiamo cura dei tuoi animali domestici come se fossero i nostri. Con anni di esperienza e passione infinita, garantiamo ai tuoi amici pelosi un'esperienza sicura, divertente e piena d'amore.",
+  "intro_paragraph2": "Dalle passeggiate giornaliere alle visite a domicilio, siamo qui per rendere la vita del tuo pet più felice, anche quando non puoi essere con lui, rendendoti partecipe tramite le foto che costantemente ti manderemo nel mentre che sarà in nostra compagnia!",
+
+  "gallery_title": "Galleria fotografica dei nostri amici animali!",
+
+  "calendar_title": "📅 Calendario Prenotazioni",
+  "calendar_description": "Seleziona la data e l'orario che preferisci per il servizio di dog sitting",
+  "calendar_loading": "Caricamento calendario...",
+
+  "map_title": "📍 Dove Ci Troviamo",
+  "map_description": "Vieni a trovarci! Siamo in zona McDonald's di Via Francesco Baracca, Firenze",
+  "map_address_label": "Indirizzo",
+  "map_address_line1": "Zona McDonald's",
+  "map_address_line2": "Via Francesco Baracca, Firenze",
+  "map_hours_label": "Orari",
+  "map_hours_weekdays": "Lun-Sab: 6:30 - 19:00",
+  "map_hours_sunday": "Domenica: Su prenotazione",
+  "map_contacts_label": "Contatti",
+  "map_contacts_email": "zampeinfamiglia@gmail.com",
+  "map_contacts_phone": "+39 123 456 7890",
+
+  "category_passeggiate": "Passeggiate",
+  "category_giorni": "Giorni Con Noi",
+  "category_compagnia": "Compagnia A Domicilio",
+
+  "service_details_btn": "Dettagli importanti del trattamento",
+
+  "service_passeggiata_breve": "Passeggiata Breve",
+  "service_passeggiata_standard": "Passeggiata Standard",
+  "service_passeggiata_lunga": "Passeggiata Lunga",
+  "service_giorno": "Giorno Con Noi",
+  "service_giorno_notte": "Giorno E Notte Con Noi",
+  "service_compagnia": "Compagnia A Domicilio",
+
+  "duration_passeggiata_breve": "30 min",
+  "duration_passeggiata_standard": "1 ora",
+  "duration_passeggiata_lunga": "1 ora 30 min",
+  "duration_giorno": "8 ore (diurno)",
+  "duration_giorno_notte": "24 ore",
+  "duration_compagnia": "Min. 2 ore",
+
+  "theme_toggle_label": "Opzioni tema",
+  "theme_label": "Tema",
+  "palette_label": "Palette",
+  "palette_human": "Modalità Umano",
+  "palette_dog": "Visione Cane",
+  "palette_cat": "Visione Gatto",
+  "palette_pet": "Pet-Friendly"
+}

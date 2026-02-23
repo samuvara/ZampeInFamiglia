@@ -1,0 +1,60 @@
+{
+  "nav_home": "Inicio",
+  "nav_services": "Servicios",
+  "nav_booking": "Reservas",
+  "nav_contacts": "Contactos",
+
+  "zim_title": "Zampe in Famiglia",
+  "zim_subtitle": "Cuidado de mascotas de confianza para perros, gatos y animales domésticos",
+  "booknow": "Reserva Ahora",
+
+  "intro_title": "Bienvenido a nuestro servicio",
+  "intro_paragraph1": "Cuidamos a tus mascotas como si fueran las nuestras. Con años de experiencia y pasión infinita, garantizamos a tus amigos peludos una experiencia segura, divertida y llena de amor.",
+  "intro_paragraph2": "Desde paseos diarios hasta visitas a domicilio, estamos aquí para hacer la vida de tu mascota más felice, incluso cuando no puedes estar con ella — manteniéndote al tanto a través de las fotos que te enviaremos constantemente mientras esté con nosotros.",
+
+  "gallery_title": "¡Galería fotográfica de nuestros amigos animales!",
+
+  "calendar_title": "📅 Calendario de Reservas",
+  "calendar_description": "Selecciona la fecha y el horario que prefieras para el servicio de cuidado de perros",
+  "calendar_loading": "Cargando calendario...",
+
+  "map_title": "📍 Dónde Encontrarnos",
+  "map_description": "¡Ven a visitarnos! Estamos cerca del McDonald's de Via Francesco Baracca, Florencia",
+  "map_address_label": "Dirección",
+  "map_address_line1": "Cerca del McDonald's",
+  "map_address_line2": "Via Francesco Baracca, Florencia",
+  "map_hours_label": "Horarios",
+  "map_hours_weekdays": "Lun-Sáb: 6:30 - 19:00",
+  "map_hours_sunday": "Domingo: Con cita previa",
+  "map_contacts_label": "Contactos",
+  "map_contacts_email": "zampeinfamiglia@gmail.com",
+  "map_contacts_phone": "+39 123 456 7890",
+
+  "category_passeggiate": "Paseos",
+  "category_giorni": "Días Con Nosotros",
+  "category_compagnia": "Compañía a Domicilio",
+
+  "service_details_btn": "Detalles importantes del servicio",
+
+  "service_passeggiata_breve": "Paseo Corto",
+  "service_passeggiata_standard": "Paseo Estándar",
+  "service_passeggiata_lunga": "Paseo Largo",
+  "service_giorno": "Día Con Nosotros",
+  "service_giorno_notte": "Día Y Noche Con Nosotros",
+  "service_compagnia": "Compañía a Domicilio",
+
+  "duration_passeggiata_breve": "30 min",
+  "duration_passeggiata_standard": "1 hora",
+  "duration_passeggiata_lunga": "1 hora 30 min",
+  "duration_giorno": "8 horas (diurno)",
+  "duration_giorno_notte": "24 horas",
+  "duration_compagnia": "Mín. 2 horas",
+
+  "theme_toggle_label": "Opciones de tema",
+  "theme_label": "Tema",
+  "palette_label": "Paleta",
+  "palette_human": "Modo Humano",
+  "palette_dog": "Visión Perro",
+  "palette_cat": "Visión Gato",
+  "palette_pet": "Pet-Friendly"
+}

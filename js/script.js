@@ -33,6 +33,13 @@ function changePalette(palette) {
     showNotification(`Modalità ${getPaletteName(palette)} attivata! 🎨`);
 }
 
+function toggleThemeSwitcher() {
+    const column = document.getElementById('theme-column');
+    const mainToggle = document.getElementById('main-theme-toggle');
+    column.classList.toggle('active');
+    mainToggle.classList.toggle('active');
+}
+
 // ----------------------------
 // Funzione: toggleTheme()
 // Descrizione:
@@ -63,6 +70,25 @@ function toggleTheme() {
 
     // Notifica breve per confermare l'azione
     showNotification(`Modalità ${newTheme === 'dark' ? 'scura' : 'chiara'} attivata!`);
+}
+
+
+function changePalette(palette) {
+    document.documentElement.setAttribute('data-palette', palette);
+    localStorage.setItem('preferred-palette', palette);
+
+    /* Evidenzia il bottone palette attivo */
+    document.querySelectorAll('[data-palette]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-palette') === palette);
+    });
+
+    showNotification(`Modalità ${getPaletteName(palette)} attivata! 🎨`);
+
+    /* Chiude il pannello dopo la selezione, come il lang switcher */
+    setTimeout(() => {
+        document.getElementById('theme-column').classList.remove('active');
+        document.getElementById('main-theme-toggle').classList.remove('active');
+    }, 250);
 }
 
 // ----------------------------
@@ -124,6 +150,16 @@ function getPaletteName(palette) {
     };
     return names[palette] || palette;
 }
+
+/* Chiudi cliccando fuori dal theme switcher */
+window.addEventListener('click', function (e) {
+    const themeSwitcher = document.querySelector('.theme-switcher-compact');
+    if (themeSwitcher && !themeSwitcher.contains(e.target)) {
+        document.getElementById('theme-column')?.classList.remove('active');
+        document.getElementById('main-theme-toggle')?.classList.remove('active');
+    }
+});
+
 
 // ----------------------------
 // Funzione: showNotification(message)
@@ -187,3 +223,105 @@ if (menuToggle && sideNav) {
         });
     });
 }
+
+// ======================================================================================================
+//  LANGUAGE SWITCHER
+// ======================================================================================================
+
+/**
+ * Apre/chiude il pannello di selezione lingua
+ */
+function toggleLangSwitcher() {
+  const column = document.getElementById('lang-column');
+  const mainBtn = document.getElementById('lang-main-toggle');
+  column.classList.toggle('active');
+  mainBtn.classList.toggle('active');
+}
+
+/**
+ * Cambia lingua con un solo tap:
+ * 1. Carica il JSON
+ * 2. Applica le traduzioni
+ * 3. Aggiorna UI (flag attivo, bottone principale)
+ * 4. Salva preferenza
+ * 5. Chiude il pannello
+ */
+function switchLanguage(lang, flag) {
+  loadLanguageFile(lang);
+  localStorage.setItem('selectedLanguage', lang);
+
+  /* Aggiorna il flag sul bottone principale */
+  const mainBtn = document.getElementById('lang-main-toggle');
+  if (mainBtn) mainBtn.textContent = flag;
+
+  /* Evidenzia il bottone della lingua selezionata */
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang-code') === lang);
+  });
+
+  /* Chiude il pannello dopo la selezione */
+  setTimeout(() => {
+    document.getElementById('lang-column').classList.remove('active');
+    mainBtn.classList.remove('active');
+  }, 250);
+}
+
+/**
+ * Carica il file JSON della lingua e applica le traduzioni
+ */
+function loadLanguageFile(lang) {
+  const filePath = `/languages/${lang}.json`;
+  fetch(filePath)
+    .then(response => {
+      if (!response.ok) throw new Error(`File non trovato: ${filePath}`);
+      return response.json();
+    })
+    .then(data => applyTranslations(data))
+    .catch(error => console.error('Errore caricamento lingua:', error));
+}
+
+/**
+ * Applica le traduzioni a tutti gli elementi con data-lang
+ */
+function applyTranslations(translations) {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if (translations[key]) {
+      el.textContent = translations[key];
+    } else {
+      console.warn(`Chiave non trovata: ${key}`);
+    }
+  });
+}
+
+/**
+ * Inizializzazione: ripristina la lingua salvata
+ */
+function initializeLanguage() {
+  const saved = localStorage.getItem('selectedLanguage') || 'it';
+  const flags = { it: '🇮🇹', en: '🇬🇧', es: '🇪🇸' };
+
+  /* Aggiorna il flag del bottone principale senza riaprire il pannello */
+  const mainBtn = document.getElementById('lang-main-toggle');
+  if (mainBtn && flags[saved]) mainBtn.textContent = flags[saved];
+
+  /* Evidenzia il bottone corretto */
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang-code') === saved);
+  });
+
+  /* Carica le traduzioni */
+  loadLanguageFile(saved);
+}
+
+/* Chiudi cliccando fuori dal pannello */
+window.addEventListener('click', function (e) {
+  const switcher = document.querySelector('.lang-switcher');
+  if (switcher && !switcher.contains(e.target)) {
+    document.getElementById('lang-column').classList.remove('active');
+    document.getElementById('lang-main-toggle').classList.remove('active');
+  }
+});
+
+/* Avvio */
+document.addEventListener('DOMContentLoaded', initializeLanguage);

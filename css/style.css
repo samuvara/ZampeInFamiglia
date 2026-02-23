@@ -283,6 +283,162 @@ body {
     transform: scale(1.15);
 }
 
+/*  ============================================
+     LANGUAGE SWITCHER
+    ============================================ */
+
+.lang-switcher {
+    position: fixed;
+    top: 2rem;
+    right: 6.0rem;
+    left: unset;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Bottone principale – mostra la lingua corrente */
+.lang-main-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid var(--border, #e8d5b7);
+    background: var(--primary, #f4a261);
+    font-size: 26px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    line-height: 1;
+}
+
+.lang-main-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+}
+
+.lang-main-btn.active {
+    background: var(--secondary, #e76f51);
+    transform: rotate(10deg) scale(1.05);
+}
+
+/* Colonna dei flag */
+.lang-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translateY(-20px);
+}
+
+.lang-options.active {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Etichetta sezione */
+.lang-divider {
+    font-size: 0.65rem;
+    color: var(--text, #3a2e24);
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 0.2rem 0;
+    font-family: Georgia, serif;
+}
+
+/* Singolo bottone lingua */
+.lang-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--border, #e8d5b7);
+    background: var(--card-bg, #fff8f0);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    position: relative;
+    line-height: 1;
+}
+
+/* Tooltip con nome lingua */
+.lang-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary, #f4a261);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: Georgia, serif;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.lang-btn:hover::after {
+    opacity: 1;
+}
+
+/* Entrata sequenziale */
+.lang-options.active .lang-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.lang-options.active .lang-btn:nth-child(2) {
+    transition-delay: 0.05s;
+}
+
+.lang-options.active .lang-btn:nth-child(3) {
+    transition-delay: 0.12s;
+}
+
+.lang-options.active .lang-btn:nth-child(4) {
+    transition-delay: 0.19s;
+}
+
+.lang-btn:hover {
+    transform: scale(1.15);
+    border-color: var(--primary, #f4a261);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Lingua attiva evidenziata */
+.lang-btn.active {
+    border-color: var(--primary, #f4a261);
+    background: var(--primary, #f4a261);
+    box-shadow: 0 4px 20px rgba(244, 162, 97, 0.45);
+}
+
+.lang-btn.active:hover {
+    transform: scale(1.15);
+}
+
 /* ============================================
    RESPONSIVE - THEME SWITCHER COMPATTO
    ============================================ */
@@ -332,6 +488,44 @@ body {
     .option-divider {
         font-size: 0.6rem;
         padding: 0.2rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .lang-switcher {
+        top: 1.5rem;
+        left: 5rem;
+    }
+
+    .lang-main-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .lang-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lang-switcher {
+        top: 1.2rem;
+        left: 4.5rem;
+    }
+
+    .lang-main-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+
+    .lang-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
     }
 }
 
@@ -639,7 +833,7 @@ header::before {
     margin-top: 1.0rem;
     font-size: 3.0rem;
     color: var(--secondary);
-    
+
     transition: color 0.3s ease;
 }
 
@@ -712,9 +906,8 @@ header::before {
 }
 
 /* ============================================
-   CALENDAR WRAPPER - SCROLLABLE (SEMPLIFICATO)
+   CALENDAR WRAPPER
    ============================================ */
-
 .calendar-wrapper {
     position: relative;
     max-width: 900px;
@@ -722,19 +915,35 @@ header::before {
     background: var(--calendar-bg);
     border-radius: 15px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    
-    /* Altezza fissa con scroll */
-    height: 700px;
-    max-height: 85vh;
+    height: 800px;
+    max-height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
-    
-    /* Smooth scrolling */
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--cream);
 }
 
-/* iFrame del calendario */
+.calendar-wrapper::-webkit-scrollbar {
+    width: 12px;
+}
+
+.calendar-wrapper::-webkit-scrollbar-track {
+    background: var(--cream);
+    border-radius: 0 15px 15px 0;
+}
+
+.calendar-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+    border: 2px solid var(--cream);
+}
+
+.calendar-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
 #google-calendar {
     width: 100%;
     height: 1500px;
@@ -747,7 +956,6 @@ header::before {
     display: block;
 }
 
-/* Loading state */
 .loading {
     display: flex;
     flex-direction: column;
@@ -769,96 +977,36 @@ header::before {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+    0% {
+        transform: rotate(0deg);
+    }
 
-/* Scrollbar personalizzata - Webkit (Chrome, Safari, Edge) */
-.calendar-wrapper::-webkit-scrollbar {
-    width: 12px;
+    100% {
+        transform: rotate(360deg);
+    }
 }
-
-.calendar-wrapper::-webkit-scrollbar-track {
-    background: var(--cream);
-    border-radius: 0 15px 15px 0;
-}
-
-.calendar-wrapper::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
-    border: 2px solid var(--cream);
-    transition: background 0.3s ease;
-}
-
-.calendar-wrapper::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary);
-}
-
-/* Scrollbar - Firefox */
-.calendar-wrapper {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) var(--cream);
-}
-
-/* Gradient indicatori scroll */
-.calendar-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--calendar-bg), transparent);
-    pointer-events: none;
-    border-radius: 15px 15px 0 0;
-    z-index: 5;
-}
-
-.calendar-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: linear-gradient(to top, var(--calendar-bg), transparent);
-    pointer-events: none;
-    border-radius: 0 0 15px 15px;
-    z-index: 5;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 
 @media (max-width: 768px) {
     .calendar-wrapper {
-        height: 600px;
-        max-height: 75vh;
-        border-radius: 12px;
-    }
-    
-    .calendar-wrapper::-webkit-scrollbar {
-        width: 8px;
-    }
-    
-    #google-calendar {
-        height: 1500px;
-        min-height: 1500px;
+        height: 82vh;
+        max-height: 82vh;
+        border-radius: 10px;
+        margin: 0 -1rem;
     }
 }
 
 @media (max-width: 480px) {
     .calendar-wrapper {
-        height: 550px;
-        max-height: 70vh;
-        border-radius: 10px;
+        height: 80vh;
+        max-height: 80vh;
+        border-radius: 8px;
+        margin: 0 -0.75rem;
     }
-    
+
     .calendar-wrapper::-webkit-scrollbar {
-        width: 6px;
+        width: 4px;
     }
-    
+
     #google-calendar {
         height: 1800px;
         min-height: 1800px;
@@ -1471,6 +1619,7 @@ header::before {
         opacity: 0;
         transform: scale(0.8);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -1481,6 +1630,7 @@ header::before {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }

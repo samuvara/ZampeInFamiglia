@@ -40,27 +40,57 @@
 
     <script src="../js/script.js"></script>
     <script src="../js/booking.js"></script>
-    
+
 </body>
+
+<div class="lang-switcher">
+
+    <!-- Bottone principale: mostra flag lingua corrente -->
+    <button class="lang-main-btn" id="lang-main-toggle" onclick="toggleLangSwitcher()" title="Cambia lingua"
+        aria-label="Seleziona lingua">
+        🇮🇹
+    </button>
+
+    <!-- Menu a colonna -->
+    <div class="lang-options" id="lang-column">
+        <div class="lang-divider">Lingua</div>
+
+        <button class="lang-btn active" data-lang-code="it" data-label="Italiano" onclick="switchLanguage('it', '🇮🇹')"
+            title="Italiano">
+            🇮🇹
+        </button>
+
+        <button class="lang-btn" data-lang-code="en" data-label="English" onclick="switchLanguage('en', '🇬🇧')"
+            title="English">
+            🇬🇧
+        </button>
+
+        <button class="lang-btn" data-lang-code="es" data-label="Español" onclick="switchLanguage('es', '🇪🇸')"
+            title="Español">
+            🇪🇸
+        </button>
+    </div>
+</div>
+
 <!-- Theme Switcher Compatto -->
 <div class="theme-switcher-compact">
     <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
         🎨
     </button>
-    
+
     <!-- Menu a colonna (nascosto di default) -->
     <div class="theme-options-column" id="theme-column">
         <!-- Divider -->
         <div class="option-divider">Tema</div>
-        
+
         <!-- Dark/Light Toggle -->
         <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
             🌙
         </button>
-        
+
         <!-- Divider -->
         <div class="option-divider">Palette</div>
-        
+
         <!-- Palette Buttons -->
         <button onclick="changePalette('human')" data-palette="human" class="option-btn active" title="Modalità Umano">
             👤

@@ -1,0 +1,60 @@
+{
+  "nav_home": "Home",
+  "nav_services": "Services",
+  "nav_booking": "Booking",
+  "nav_contacts": "Contacts",
+
+  "zim_title": "Zampe in Famiglia",
+  "zim_subtitle": "Reliable pet sitting for dogs, cats and domestic animals",
+  "booknow": "Book Now",
+
+  "intro_title": "Welcome to our service",
+  "intro_paragraph1": "We take care of your pets as if they were our own. With years of experience and endless passion, we guarantee your furry friends a safe, fun and loving experience.",
+  "intro_paragraph2": "From daily walks to home visits, we are here to make your pet's life happier, even when you can't be with them — keeping you involved through the photos we'll constantly send you while they're in our care!",
+
+  "gallery_title": "Photo gallery of our animal friends!",
+
+  "calendar_title": "📅 Booking Calendar",
+  "calendar_description": "Select the date and time you prefer for the dog sitting service",
+  "calendar_loading": "Loading calendar...",
+
+  "map_title": "📍 Where to Find Us",
+  "map_description": "Come visit us! We are near McDonald's on Via Francesco Baracca, Florence",
+  "map_address_label": "Address",
+  "map_address_line1": "Near McDonald's",
+  "map_address_line2": "Via Francesco Baracca, Florence",
+  "map_hours_label": "Hours",
+  "map_hours_weekdays": "Mon-Sat: 6:30 - 19:00",
+  "map_hours_sunday": "Sunday: By appointment",
+  "map_contacts_label": "Contacts",
+  "map_contacts_email": "zampeinfamiglia@gmail.com",
+  "map_contacts_phone": "+39 123 456 7890",
+
+  "category_passeggiate": "Walks",
+  "category_giorni": "Days With Us",
+  "category_compagnia": "Home Companionship",
+
+  "service_details_btn": "Important treatment details",
+
+  "service_passeggiata_breve": "Short Walk",
+  "service_passeggiata_standard": "Standard Walk",
+  "service_passeggiata_lunga": "Long Walk",
+  "service_giorno": "Day With Us",
+  "service_giorno_notte": "Day And Night With Us",
+  "service_compagnia": "Home Companionship",
+
+  "duration_passeggiata_breve": "30 min",
+  "duration_passeggiata_standard": "1 hour",
+  "duration_passeggiata_lunga": "1 hour 30 min",
+  "duration_giorno": "8 hours (daytime)",
+  "duration_giorno_notte": "24 hours",
+  "duration_compagnia": "Min. 2 hours",
+
+  "theme_toggle_label": "Theme options",
+  "theme_label": "Theme",
+  "palette_label": "Palette",
+  "palette_human": "Human Mode",
+  "palette_dog": "Dog Vision",
+  "palette_cat": "Cat Vision",
+  "palette_pet": "Pet-Friendly"
+}

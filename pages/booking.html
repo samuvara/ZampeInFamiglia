@@ -118,7 +118,8 @@
 
                     <iframe id="google-calendar"
                         src="https://calendar.google.com/calendar/embed?src=samuel.varano01%40gmail.com&ctz=Europe%2FRome"
-                        style="border: 0; display: none;" width="100%" height="1500" frameborder="0" scrolling="yes"></iframe>
+                        style="border: 0; display: none;" width="100%" height="1500" frameborder="0"
+                        scrolling="yes"></iframe>
 
                     <!-- <iframe id="google-calendar"
                         src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0R9Ju9iCFqFHHppb1Pqln_-23OycyNCryu-UwkG9CldT_ih20Z9KDnnxi_fEntMWqr0RiDC3yZ?gv=true"
@@ -232,74 +233,77 @@
         </div>
     </div> -->
 
+
+
+    <div class="lang-switcher">
+
+        <!-- Bottone principale: mostra flag lingua corrente -->
+        <button class="lang-main-btn" id="lang-main-toggle" onclick="toggleLangSwitcher()" title="Cambia lingua"
+            aria-label="Seleziona lingua">
+            🇮🇹
+        </button>
+
+        <!-- Menu a colonna -->
+        <div class="lang-options" id="lang-column">
+            <div class="lang-divider" data-lang="lang_label">Lingua</div>
+
+            <button class="lang-btn active" data-lang-code="it" data-label="Italiano"
+                onclick="switchLanguage('it', '🇮🇹')" title="Italiano">
+                🇮🇹
+            </button>
+
+            <button class="lang-btn" data-lang-code="en" data-label="English" onclick="switchLanguage('en', '🇬🇧')"
+                title="English">
+                🇬🇧
+            </button>
+
+            <button class="lang-btn" data-lang-code="es" data-label="Español" onclick="switchLanguage('es', '🇪🇸')"
+                title="Español">
+                🇪🇸
+            </button>
+        </div>
+    </div>
+
+    <!-- Theme Switcher Compatto -->
+    <div class="theme-switcher-compact">
+        <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
+            🎨
+        </button>
+
+        <!-- Menu a colonna (nascosto di default) -->
+        <div class="theme-options-column" id="theme-column">
+            <!-- Divider -->
+            <div class="option-divider" data-lang="theme_label">Tema</div>
+
+            <!-- Dark/Light Toggle -->
+            <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
+                🌙
+            </button>
+
+            <!-- Divider -->
+            <div class="option-divider" data-lang="palette_label">Palette</div>
+
+            <!-- Palette Buttons -->
+            <button onclick="changePalette('human')" data-palette="human" class="option-btn active"
+                title="Modalità Umano">
+                👤
+            </button>
+            <button onclick="changePalette('dog')" data-palette="dog" class="option-btn" title="Visione Cane">
+                🐕
+            </button>
+            <button onclick="changePalette('cat')" data-palette="cat" class="option-btn" title="Visione Gatto">
+                🐱
+            </button>
+            <button onclick="changePalette('pet')" data-palette="pet" class="option-btn" title="Pet-Friendly">
+                🐾
+            </button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="../js/booking.js"></script>
     <script src="../js/script.js"></script>
 
 </body>
-
-<div class="lang-switcher">
-
-    <!-- Bottone principale: mostra flag lingua corrente -->
-    <button class="lang-main-btn" id="lang-main-toggle" onclick="toggleLangSwitcher()" title="Cambia lingua"
-        aria-label="Seleziona lingua">
-        🇮🇹
-    </button>
-
-    <!-- Menu a colonna -->
-    <div class="lang-options" id="lang-column">
-        <div class="lang-divider">Lingua</div>
-
-        <button class="lang-btn active" data-lang-code="it" data-label="Italiano" onclick="switchLanguage('it', '🇮🇹')"
-            title="Italiano">
-            🇮🇹
-        </button>
-
-        <button class="lang-btn" data-lang-code="en" data-label="English" onclick="switchLanguage('en', '🇬🇧')"
-            title="English">
-            🇬🇧
-        </button>
-
-        <button class="lang-btn" data-lang-code="es" data-label="Español" onclick="switchLanguage('es', '🇪🇸')"
-            title="Español">
-            🇪🇸
-        </button>
-    </div>
-</div>
-
-<!-- Theme Switcher Compatto -->
-<div class="theme-switcher-compact">
-    <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
-        🎨
-    </button>
-
-    <!-- Menu a colonna (nascosto di default) -->
-    <div class="theme-options-column" id="theme-column">
-        <!-- Divider -->
-        <div class="option-divider">Tema</div>
-
-        <!-- Dark/Light Toggle -->
-        <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
-            🌙
-        </button>
-
-        <!-- Divider -->
-        <div class="option-divider">Palette</div>
-
-        <!-- Palette Buttons -->
-        <button onclick="changePalette('human')" data-palette="human" class="option-btn active" title="Modalità Umano">
-            👤
-        </button>
-        <button onclick="changePalette('dog')" data-palette="dog" class="option-btn" title="Visione Cane">
-            🐕
-        </button>
-        <button onclick="changePalette('cat')" data-palette="cat" class="option-btn" title="Visione Gatto">
-            🐱
-        </button>
-        <button onclick="changePalette('pet')" data-palette="pet" class="option-btn" title="Pet-Friendly">
-            🐾
-        </button>
-    </div>
-</div>
 
 </html>

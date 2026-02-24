@@ -265,12 +265,27 @@ function switchLanguage(lang, flag) {
     }, 250);
 }
 
+function getLanguagesPath(lang) {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+
+    // Rimuove l'ultimo elemento solo se è un file (contiene un punto)
+    const fileParts = parts[parts.length - 1]?.includes('.') ? parts.slice(0, -1) : parts;
+
+    // Numero di cartelle in cui ci troviamo (0 = root)
+    const depth = fileParts.length;
+
+    // Risaliamo di tanti livelli quante sono le cartelle
+    const prefix = depth > 0 ? '../'.repeat(depth) : '';
+
+    return `${prefix}languages/${lang}.json`;
+}
+
 /**
  * Carica il file JSON della lingua e applica le traduzioni
  */
 function loadLanguageFile(lang) {
-    // Path assoluto: funziona da qualsiasi pagina del sito
-    const filePath = `/languages/${lang}.json`;
+    const filePath = getLanguagesPath(lang);
+
     fetch(filePath)
         .then(response => {
             if (!response.ok) throw new Error(`File non trovato: ${filePath}`);
@@ -322,6 +337,3 @@ window.addEventListener('click', function (e) {
         document.getElementById('lang-main-toggle').classList.remove('active');
     }
 });
-
-/*  Avvio 
-document.addEventListener('DOMContentLoaded', initializeLanguage); */

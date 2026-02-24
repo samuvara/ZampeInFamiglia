@@ -37,7 +37,7 @@
     <div class="paw">🐾</div>
 
     <main class="services-container">
-        
+
         <div class="services-menu">
             <!-- Left sidebar with categories -->
             <aside class="services-sidebar">
@@ -68,7 +68,8 @@
                         </div>
                         <div class="service-details">
                             <span class="service-duration" data-lang="duration_passeggiata_breve">30 min</span>
-                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-30')" data-lang="service_details_btn">
+                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-30')"
+                                data-lang="service_details_btn">
                                 Dettagli importanti del trattamento
                             </button>
                         </div>
@@ -81,7 +82,8 @@
                         </div>
                         <div class="service-details">
                             <span class="service-duration" data-lang="duration_passeggiata_standard">1 ora</span>
-                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-60')" data-lang="service_details_btn">
+                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-60')"
+                                data-lang="service_details_btn">
                                 Dettagli importanti del trattamento
                             </button>
                         </div>
@@ -94,7 +96,8 @@
                         </div>
                         <div class="service-details">
                             <span class="service-duration" data-lang="duration_passeggiata_lunga">1 ora 30 min</span>
-                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-90')" data-lang="service_details_btn">
+                            <button class="service-info-btn" onclick="showServiceDetails('passeggiata-90')"
+                                data-lang="service_details_btn">
                                 Dettagli importanti del trattamento
                             </button>
                         </div>
@@ -110,7 +113,8 @@
                         </div>
                         <div class="service-details">
                             <span class="service-duration" data-lang="duration_giorno">8 ore (diurno)</span>
-                            <button class="service-info-btn" onclick="showServiceDetails('giorno')" data-lang="service_details_btn">
+                            <button class="service-info-btn" onclick="showServiceDetails('giorno')"
+                                data-lang="service_details_btn">
                                 Dettagli importanti del trattamento
                             </button>
                         </div>
@@ -123,7 +127,8 @@
                         </div>
                         <div class="service-details">
                             <span class="service-duration" data-lang="duration_giorno_notte">24 ore</span>
-                            <button class="service-info-btn" onclick="showServiceDetails('giorno-notte')" data-lang="service_details_btn">
+                            <button class="service-info-btn" onclick="showServiceDetails('giorno-notte')"
+                                data-lang="service_details_btn">
                                 Dettagli importanti del trattamento
                             </button>
                         </div>
@@ -134,12 +139,13 @@
                 <div class="service-group hidden" data-group="compagnia">
                     <div class="service-item">
                         <div class="service-header">
-                            <h3 class="service-title"  data-lang="service_compagnia">Compagnia A Domicilio</h3>
+                            <h3 class="service-title" data-lang="service_compagnia">Compagnia A Domicilio</h3>
                             <span class="service-price">€ 20/ora</span>
                         </div>
                         <div class="service-details">
                             <span class="service-duration" data-lang="duration_compagnia">Min. 2 ore</span>
-                            <button class="service-info-btn" onclick="showServiceDetails('compagnia-dom')" data-lang="service_details_btn">
+                            <button class="service-info-btn" onclick="showServiceDetails('compagnia-dom')"
+                                data-lang="service_details_btn">
                                 Dettagli importanti del trattamento
                             </button>
                         </div>
@@ -158,73 +164,74 @@
         </div>
     </div>
 
+    <div class="lang-switcher">
+
+        <!-- Bottone principale: mostra flag lingua corrente -->
+        <button class="lang-main-btn" id="lang-main-toggle" onclick="toggleLangSwitcher()" title="Cambia lingua"
+            aria-label="Seleziona lingua">
+            🇮🇹
+        </button>
+
+        <!-- Menu a colonna -->
+        <div class="lang-options" id="lang-column">
+            <div class="lang-divider" data-lang="lang_label">Lingua</div>
+
+            <button class="lang-btn active" data-lang-code="it" data-label="Italiano"
+                onclick="switchLanguage('it', '🇮🇹')" title="Italiano">
+                🇮🇹
+            </button>
+
+            <button class="lang-btn" data-lang-code="en" data-label="English" onclick="switchLanguage('en', '🇬🇧')"
+                title="English">
+                🇬🇧
+            </button>
+
+            <button class="lang-btn" data-lang-code="es" data-label="Español" onclick="switchLanguage('es', '🇪🇸')"
+                title="Español">
+                🇪🇸
+            </button>
+        </div>
+    </div>
+
+    <!-- Theme Switcher Compatto -->
+    <div class="theme-switcher-compact">
+        <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
+            🎨
+        </button>
+
+        <!-- Menu a colonna (nascosto di default) -->
+        <div class="theme-options-column" id="theme-column">
+            <!-- Divider -->
+            <div class="option-divider" data-lang="theme_label">Tema</div>
+
+            <!-- Dark/Light Toggle -->
+            <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
+                🌙
+            </button>
+
+            <!-- Divider -->
+            <div class="option-divider" data-lang="palette_label">Palette</div>
+
+            <!-- Palette Buttons -->
+            <button onclick="changePalette('human')" data-palette="human" class="option-btn active"
+                title="Modalità Umano">
+                👤
+            </button>
+            <button onclick="changePalette('dog')" data-palette="dog" class="option-btn" title="Visione Cane">
+                🐕
+            </button>
+            <button onclick="changePalette('cat')" data-palette="cat" class="option-btn" title="Visione Gatto">
+                🐱
+            </button>
+            <button onclick="changePalette('pet')" data-palette="pet" class="option-btn" title="Pet-Friendly">
+                🐾
+            </button>
+        </div>
+    </div>
+
     <script src="../js/script.js"></script>
     <script src="../js/services-menu.js"></script>
     <script src="../js/booking.js"></script>
 </body>
-
-<div class="lang-switcher">
-
-    <!-- Bottone principale: mostra flag lingua corrente -->
-    <button class="lang-main-btn" id="lang-main-toggle" onclick="toggleLangSwitcher()" title="Cambia lingua"
-        aria-label="Seleziona lingua">
-        🇮🇹
-    </button>
-
-    <!-- Menu a colonna -->
-    <div class="lang-options" id="lang-column">
-        <div class="lang-divider">Lingua</div>
-
-        <button class="lang-btn active" data-lang-code="it" data-label="Italiano" onclick="switchLanguage('it', '🇮🇹')"
-            title="Italiano">
-            🇮🇹
-        </button>
-
-        <button class="lang-btn" data-lang-code="en" data-label="English" onclick="switchLanguage('en', '🇬🇧')"
-            title="English">
-            🇬🇧
-        </button>
-
-        <button class="lang-btn" data-lang-code="es" data-label="Español" onclick="switchLanguage('es', '🇪🇸')"
-            title="Español">
-            🇪🇸
-        </button>
-    </div>
-</div>
-
-<!-- Theme Switcher Compatto -->
-<div class="theme-switcher-compact">
-    <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
-        🎨
-    </button>
-
-    <!-- Menu a colonna (nascosto di default) -->
-    <div class="theme-options-column" id="theme-column">
-        <!-- Divider -->
-        <div class="option-divider">Tema</div>
-
-        <!-- Dark/Light Toggle -->
-        <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
-            🌙
-        </button>
-
-        <!-- Divider -->
-        <div class="option-divider">Palette</div>
-
-        <!-- Palette Buttons -->
-        <button onclick="changePalette('human')" data-palette="human" class="option-btn active" title="Modalità Umano">
-            👤
-        </button>
-        <button onclick="changePalette('dog')" data-palette="dog" class="option-btn" title="Visione Cane">
-            🐕
-        </button>
-        <button onclick="changePalette('cat')" data-palette="cat" class="option-btn" title="Visione Gatto">
-            🐱
-        </button>
-        <button onclick="changePalette('pet')" data-palette="pet" class="option-btn" title="Pet-Friendly">
-            🐾
-        </button>
-    </div>
-</div>
 
 </html>

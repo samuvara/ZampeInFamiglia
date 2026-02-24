@@ -266,18 +266,19 @@ function switchLanguage(lang, flag) {
 }
 
 function getLanguagesPath(lang) {
-    const parts = window.location.pathname.split('/').filter(Boolean);
+    // Trova il tag <script> che ha src contenente "script.js"
+    const scriptTag = Array.from(document.querySelectorAll('script[src]'))
+        .find(s => s.src.includes('script.js'));
 
-    // Rimuove l'ultimo elemento solo se è un file (contiene un punto)
-    const fileParts = parts[parts.length - 1]?.includes('.') ? parts.slice(0, -1) : parts;
+    if (scriptTag) {
+        // Risale dalla cartella js/ alla root del progetto
+        const base = scriptTag.src.substring(0, scriptTag.src.lastIndexOf('/js/') + 1);
+        return `${base}languages/${lang}.json`;
+    }
 
-    // Numero di cartelle in cui ci troviamo (0 = root)
-    const depth = fileParts.length;
-
-    // Risaliamo di tanti livelli quante sono le cartelle
-    const prefix = depth > 0 ? '../'.repeat(depth) : '';
-
-    return `${prefix}languages/${lang}.json`;
+    // Fallback di sicurezza: usa origin + primo segmento di path (nome repo GitHub Pages)
+    const firstSegment = window.location.pathname.split('/').filter(Boolean)[0] || '';
+    return `${window.location.origin}/${firstSegment}/languages/${lang}.json`;
 }
 
 /**

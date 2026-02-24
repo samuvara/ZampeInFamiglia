@@ -45,7 +45,7 @@
 
     <!-- Main Content -->
     <main class="content">
-        <h2 data-lang="into_title">Benvenuto nel nostro servizio</h2>
+        <h2 data-lang="intro_title">Benvenuto nel nostro servizio</h2>
         <p data-lang="intro_paragraph1">
             Ci prendiamo cura dei tuoi animali domestici come se fossero i nostri.
             Con anni di esperienza e passione infinita, garantiamo ai tuoi amici pelosi
@@ -113,7 +113,7 @@
 
         <!-- Menu a colonna -->
         <div class="lang-options" id="lang-column">
-            <div class="lang-divider">Lingua</div>
+            <div class="lang-divider" data-lang="lang">Lingua</div>
 
             <button class="lang-btn active" data-lang-code="it" data-label="Italiano"
                 onclick="switchLanguage('it', '🇮🇹')" title="Italiano">
@@ -141,7 +141,7 @@
         <!-- Menu a colonna (nascosto di default) -->
         <div class="theme-options-column" id="theme-column">
             <!-- Divider -->
-            <div class="option-divider">Tema</div>
+            <div class="option-divider" data-lang="theme_label">Tema</div>
 
             <!-- Dark/Light Toggle -->
             <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
@@ -149,7 +149,7 @@
             </button>
 
             <!-- Divider -->
-            <div class="option-divider">Palette</div>
+            <div class="option-divider" data-lang="palette_label">Palette</div>
 
             <!-- Palette Buttons -->
             <button onclick="changePalette('human')" data-palette="human" class="option-btn active"

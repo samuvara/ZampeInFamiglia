@@ -494,7 +494,8 @@ body {
 @media (max-width: 768px) {
     .lang-switcher {
         top: 1.5rem;
-        left: 5rem;
+        left: unset;
+        right: 5.5rem;
     }
 
     .lang-main-btn {
@@ -513,7 +514,8 @@ body {
 @media (max-width: 480px) {
     .lang-switcher {
         top: 1.2rem;
-        left: 4.5rem;
+        left: unset;
+        right: 4.5rem;
     }
 
     .lang-main-btn {
@@ -1457,11 +1459,11 @@ header::before {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    background: var(--card-bg);
+    background: #000;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
 }
 
 /* Slider Track (contiene le foto) */
@@ -1483,25 +1485,26 @@ header::before {
     justify-content: center;
     cursor: pointer;
     position: relative;
-    background: var(--light);
+    background: #000 /* var(--light) */;
     transition: transform 0.3s ease;
     overflow: hidden;
 }
 
-.slider-photo:hover {
+/* .slider-photo:hover {
     transform: scale(1.02);
-}
+} */
 
 .slider-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* cover; metto contain per mostra le immagini per intero*/
+    object-position: center;
     display: block;
     transition: filter 0.3s ease;
 }
 
 .slider-photo:hover img {
-    filter: brightness(1.1);
+    filter: brightness(1.08);
 }
 
 /* Navigation Buttons */

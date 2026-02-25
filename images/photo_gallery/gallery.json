@@ -1,0 +1,80 @@
+{
+    "photos": [
+        {
+            "src": "images/photo_gallery/foto1.jpg",
+            "caption": "Foto 1 - Cani felici"
+        },
+        {
+            "src": "images/photo_gallery/foto2.webp",
+            "caption": "Foto 2 - Momento di gioco"
+        },
+        {
+            "src": "images/photo_gallery/foto3.jpeg",
+            "caption": "Foto 3 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto4.jpeg",
+            "caption": "Foto 4 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto5.jpg",
+            "caption": "Foto 5 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto6.jpg",
+            "caption": "Foto 6 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto7.jpg",
+            "caption": "Foto 7 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto8.jpg",
+            "caption": "Foto 8 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto9.jpg",
+            "caption": "Foto 9 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto10.jpg",
+            "caption": "Foto 10 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto11.jpg",
+            "caption": "Foto 11 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto12.jpg",
+            "caption": "Foto 12 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto13.jpg",
+            "caption": "Foto 13 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto14.jpeg",
+            "caption": "Foto 14 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto15.jpeg",
+            "caption": "Foto 15 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto16.jpeg",
+            "caption": "Foto 16 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto17.jpg",
+            "caption": "Foto 17 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto18.jpeg",
+            "caption": "Foto 18 - Relax"
+        },
+        {
+            "src": "images/photo_gallery/foto19.jpg",
+            "caption": "Foto 19 - Workout 💪"
+        }
+    ]
+}

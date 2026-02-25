@@ -1,28 +1,20 @@
-// !!!!! ALL THE FUNCTIONALITY ARE USED IN THE HOME PAGE AND NOT ANYMORE IN THE GALLERY PAGE !!!!!
-
 // ============================================
 // GALLERY SLIDER FUNCTIONALITY
 // ============================================
 // Questo script gestisce la galleria fotografica interattiva:
-// - Carica le foto da una cartella
+// - Carica le foto da images/photo_gallery/gallery.json
 // - Implementa uno slider automatico/manuale
 // - Fornisce navigazione con frecce e dots
 // - Permette di visualizzare foto in lightbox (grande schermo)
+// - Conta automaticamente le foto presenti nel JSON (nessun numero fisso)
 
 // ============================================
 // VARIABILI GLOBALI
 // ============================================
 
-// Carica tutte le foto dalla cartella photo_gallery/
 let photos = [];
-
-// Indice della foto attualmente visualizzata nello slider
 let currentIndex = 0;
-
-// Intervallo per l'auto-scroll automatico (se abilitato)
 let autoScrollInterval = null;
-
-// Durata dell'auto-scroll in millisecondi (5 secondi)
 const AUTO_SCROLL_DURATION = 5000;
 
 // ============================================
@@ -36,103 +28,128 @@ window.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // FUNZIONE: initializeGallery()
 // ============================================
-// Scopo:
-// Inizializza la galleria caricando le foto e impostando gli event listener
-function initializeGallery() {
-    // Carica le foto da simulazione (vedi funzione loadPhotos())
-    loadPhotos();
-    
-    // Crea i dots indicatori (puntini in basso nello slider)
+// Carica il JSON e poi inizializza tutto lo slider.
+// Il JSON si trova in: images/photo_gallery/gallery.json
+// Per aggiungere o rimuovere foto basta modificare quel file —
+// il contatore, i dots e lo slider si aggiornano automaticamente.
+
+async function initializeGallery() {
+    const loaded = await loadPhotosFromJSON();
+
+    if (!loaded || photos.length === 0) {
+        showGalleryError();
+        return;
+    }
+
+    buildSlider();
     createDots();
-    
-    // Aggiunge event listener ai bottoni di navigazione
     setupEventListeners();
-    
-    // Aggiorna il contatore foto
     updatePhotoCounter();
-    
-    // Avvia lo scroll automatico
     startAutoScroll();
 }
 
 // ============================================
-// FUNZIONE: loadPhotos()
+// FUNZIONE: loadPhotosFromJSON()
 // ============================================
-// Scopo:
-// Carica tutte le foto dalla cartella ../images/photo_gallery/
-// Nota: Poiché non possiamo accedere direttamente al filesystem dal browser,
-// usiamo un approccio alternativo che permette all'utente di aggiungere foto
-// attraverso una struttura dati o da un server.
-// Attualmente, genera una lista di foto di placeholder.
+// Legge images/photo_gallery/gallery.json e popola l'array photos.
+// Restituisce true se il caricamento è andato a buon fine, false altrimenti.
 
-function loadPhotos() {
+async function loadPhotosFromJSON() {
+    try {
+        const response = await fetch('images/photo_gallery/gallery.json');
+
+        if (!response.ok) {
+            console.error(`Impossibile caricare gallery.json: HTTP ${response.status}`);
+            return false;
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data.photos) || data.photos.length === 0) {
+            console.warn('gallery.json non contiene foto o ha formato errato.');
+            return false;
+        }
+
+        // Filtra eventuali voci prive di src
+        photos = data.photos.filter(p => p.src && p.src.trim() !== '');
+        return true;
+
+    } catch (err) {
+        console.error('Errore durante il caricamento di gallery.json:', err);
+        return false;
+    }
+}
+
+// ============================================
+// FUNZIONE: buildSlider()
+// ============================================
+// Crea dinamicamente gli elementi <img> nel track dello slider.
+// Il numero di foto dipende esclusivamente da ciò che è presente in gallery.json.
+
+function buildSlider() {
     const sliderTrack = document.getElementById('sliderTrack');
-    
-    // In un'applicazione reale, questi dati verrebbero da un server
-    // Per ora, gli sviluppatori possono aggiungere le foto manualmente
-    // creando elementi img o modificando questa funzione
-    
-    // Esempio di struttura foto (aggiorna con i tuoi file reali):
-    const photoFiles = [
-        { src: 'images/photo_gallery/cane1.jpg', caption: 'Foto 1 - Cani felici' },
-        { src: 'images/photo_gallery/cane2.jpg', caption: 'Foto 2 - Momento di gioco' },
-        { src: 'images/photo_gallery/cane3.jpg', caption: 'Foto 3 - Relax' },
-        { src: 'images/photo_gallery/cane4.jpg', caption: 'Foto 4 - Doggo' },
-        { src: 'images/photo_gallery/cane5.png', caption: 'Foto 5 - Passeggiata' },
-        // Aggiungi le tue foto qui: { src: 'path/to/image.jpg', caption: 'Descrizione' }
-    ];
-    
-    // Popola l'array globale photos
-    photos = photoFiles;
-    
-    // Crea gli elementi img per ogni foto nel slider
+    sliderTrack.innerHTML = ''; // Pulisce eventuali contenuti residui
+
     photos.forEach((photo, index) => {
         const photoDiv = document.createElement('div');
         photoDiv.className = 'slider-photo';
-        
+
         const img = document.createElement('img');
         img.src = photo.src;
-        img.alt = photo.caption;
-        img.loading = 'lazy'; // Caricamento pigro per prestazioni
-        
-        // Click sulla foto apre il lightbox
+        img.alt = photo.caption || `Foto ${index + 1}`;
+        img.loading = 'lazy';
+
         img.addEventListener('click', () => openLightbox(index));
-        
+
         photoDiv.appendChild(img);
         sliderTrack.appendChild(photoDiv);
     });
-    
-    // Aggiorna il totale delle foto nel contatore
-    document.getElementById('totalPhotos').textContent = photos.length;
+
+    // Aggiorna il totale visibile nel contatore (es. "1 / 13")
+    const totalEl = document.getElementById('totalPhotos');
+    if (totalEl) totalEl.textContent = photos.length;
+}
+
+// ============================================
+// FUNZIONE: showGalleryError()
+// ============================================
+// Mostra un messaggio nell'area dello slider se il JSON non è disponibile.
+
+function showGalleryError() {
+    const sliderTrack = document.getElementById('sliderTrack');
+    if (sliderTrack) {
+        sliderTrack.innerHTML = `
+            <div class="slider-photo" style="display:flex;align-items:center;justify-content:center;height:100%;min-height:300px;">
+                <p style="color:#888;font-size:1rem;text-align:center;padding:2rem;">
+                    📷 Nessuna foto trovata.<br>
+                    <small>Controlla che <em>images/photo_gallery/gallery.json</em> esista e sia correttamente compilato.</small>
+                </p>
+            </div>`;
+    }
+    const totalEl = document.getElementById('totalPhotos');
+    if (totalEl) totalEl.textContent = 0;
 }
 
 // ============================================
 // FUNZIONE: createDots()
 // ============================================
-// Scopo:
-// Crea i puntini indicatori (dots) in basso nello slider
-// Uno per ogni foto, cliccabili per saltare a quella foto
+// Crea i puntini indicatori: uno per ogni foto nel JSON.
 
 function createDots() {
     const dotsContainer = document.getElementById('sliderDots');
-    
-    // Per ogni foto, crea un dot
-    photos.forEach((photo, index) => {
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+
+    photos.forEach((_, index) => {
         const dot = document.createElement('div');
-        dot.className = 'slider-dot';
-        
-        // Il primo dot è attivo di default
-        if (index === 0) {
-            dot.classList.add('active');
-        }
-        
-        // Click sul dot sposta lo slider a quella foto
+        dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
+
         dot.addEventListener('click', () => {
             stopAutoScroll();
             goToPhoto(index);
             startAutoScroll();
         });
-        
+
         dotsContainer.appendChild(dot);
     });
 }
@@ -140,11 +157,8 @@ function createDots() {
 // ============================================
 // FUNZIONE: setupEventListeners()
 // ============================================
-// Scopo:
-// Aggiunge event listener ai bottoni di navigazione e al lightbox
 
 function setupEventListeners() {
-    // Bottone "Foto Precedente"
     const prevBtn = document.getElementById('sliderPrev');
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
@@ -153,8 +167,7 @@ function setupEventListeners() {
             startAutoScroll();
         });
     }
-    
-    // Bottone "Foto Successiva"
+
     const nextBtn = document.getElementById('sliderNext');
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
@@ -163,161 +176,70 @@ function setupEventListeners() {
             startAutoScroll();
         });
     }
-    
-    // Bottone Chiudi nel lightbox
+
     const closeLightboxBtn = document.getElementById('lightboxClose');
     if (closeLightboxBtn) {
         closeLightboxBtn.addEventListener('click', closeLightbox);
     }
-    
-    // Click fuori dall'immagine nel lightbox per chiuderlo
+
     const lightbox = document.getElementById('photoLightbox');
     if (lightbox) {
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
+            if (e.target === lightbox) closeLightbox();
         });
     }
-    
-    // Navigazione con tastiera
+
     document.addEventListener('keydown', (e) => {
-        const lightbox = document.getElementById('photoLightbox');
-        
-        if (lightbox.classList.contains('active')) {
-            // Se il lightbox è aperto
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+        const lb = document.getElementById('photoLightbox');
+        if (lb && lb.classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
         } else {
-            // Se il lightbox è chiuso
-            if (e.key === 'ArrowLeft') {
-                stopAutoScroll();
-                previousPhoto();
-                startAutoScroll();
-            } else if (e.key === 'ArrowRight') {
-                stopAutoScroll();
-                nextPhoto();
-                startAutoScroll();
-            }
+            if (e.key === 'ArrowLeft') { stopAutoScroll(); previousPhoto(); startAutoScroll(); }
+            else if (e.key === 'ArrowRight') { stopAutoScroll(); nextPhoto(); startAutoScroll(); }
         }
     });
 }
 
 // ============================================
-// FUNZIONE: goToPhoto(index)
+// NAVIGAZIONE SLIDER
 // ============================================
-// Scopo:
-// Sposta lo slider alla foto specificata dall'indice
-// Parametri:
-// - index (number): indice della foto da visualizzare (0-based)
 
 function goToPhoto(index) {
-    // Assicura che l'indice sia valido (fra 0 e numero di foto - 1)
-    if (index < 0 || index >= photos.length) {
-        return;
-    }
-    
+    if (index < 0 || index >= photos.length) return;
     currentIndex = index;
-    
-    // Calcola quanto scorrere il track (-100% per ogni foto)
-    const offset = -currentIndex * 100;
-    
-    // Applica la trasformazione al track
     const sliderTrack = document.getElementById('sliderTrack');
-    sliderTrack.style.transform = `translateX(${offset}%)`;
-    
-    // Aggiorna i dots per evidenziare quello attivo
+    if (sliderTrack) sliderTrack.style.transform = `translateX(${-currentIndex * 100}%)`;
     updateDots();
-    
-    // Aggiorna il contatore
     updatePhotoCounter();
 }
 
-// ============================================
-// FUNZIONE: nextPhoto()
-// ============================================
-// Scopo:
-// Sposta lo slider alla foto successiva
-// Se è l'ultima foto, torna alla prima (loop)
-
 function nextPhoto() {
-    let nextIndex = currentIndex + 1;
-    
-    // Se siamo all'ultima foto, torna alla prima
-    if (nextIndex >= photos.length) {
-        nextIndex = 0;
-    }
-    
-    goToPhoto(nextIndex);
+    goToPhoto((currentIndex + 1) % photos.length);
 }
-
-// ============================================
-// FUNZIONE: previousPhoto()
-// ============================================
-// Scopo:
-// Sposta lo slider alla foto precedente
-// Se è la prima foto, va all'ultima (loop)
 
 function previousPhoto() {
-    let prevIndex = currentIndex - 1;
-    
-    // Se siamo alla prima foto, vai all'ultima
-    if (prevIndex < 0) {
-        prevIndex = photos.length - 1;
-    }
-    
-    goToPhoto(prevIndex);
+    goToPhoto((currentIndex - 1 + photos.length) % photos.length);
 }
 
-// ============================================
-// FUNZIONE: updateDots()
-// ============================================
-// Scopo:
-// Aggiorna lo stato attivo dei dots
-// Rimuove 'active' da tutti e lo aggiunge a quello corrente
-
 function updateDots() {
-    const dots = document.querySelectorAll('.slider-dot');
-    
-    dots.forEach((dot, index) => {
-        if (index === currentIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
+    document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
     });
 }
 
-// ============================================
-// FUNZIONE: updatePhotoCounter()
-// ============================================
-// Scopo:
-// Aggiorna il testo del contatore foto ("1 / 5" ad esempio)
-
 function updatePhotoCounter() {
-    document.getElementById('currentPhotoIndex').textContent = currentIndex + 1;
+    const el = document.getElementById('currentPhotoIndex');
+    if (el) el.textContent = currentIndex + 1;
 }
 
 // ============================================
-// FUNZIONE: startAutoScroll()
+// AUTO-SCROLL
 // ============================================
-// Scopo:
-// Avvia lo scorrimento automatico dello slider
-// Ogni 5 secondi passa alla foto successiva
 
 function startAutoScroll() {
-    autoScrollInterval = setInterval(() => {
-        nextPhoto();
-    }, AUTO_SCROLL_DURATION);
+    stopAutoScroll();
+    autoScrollInterval = setInterval(nextPhoto, AUTO_SCROLL_DURATION);
 }
-
-// ============================================
-// FUNZIONE: stopAutoScroll()
-// ============================================
-// Scopo:
-// Ferma lo scorrimento automatico
-// Utile quando l'utente interagisce manualmente con lo slider
 
 function stopAutoScroll() {
     if (autoScrollInterval) {
@@ -327,39 +249,25 @@ function stopAutoScroll() {
 }
 
 // ============================================
-// FUNZIONE: openLightbox(index)
+// LIGHTBOX
 // ============================================
-// Scopo:
-// Apre il lightbox mostrando la foto ingrandita
-// Parametri:
-// - index (number): indice della foto da mostrare
 
 function openLightbox(index) {
     const lightbox = document.getElementById('photoLightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxCaption = document.getElementById('lightboxCaption');
-    
-    // Imposta l'immagine e la didascalia
+
+    if (!lightbox || !lightboxImage) return;
+
     lightboxImage.src = photos[index].src;
-    lightboxCaption.textContent = photos[index].caption;
-    
-    // Mostra il lightbox
+    if (lightboxCaption) lightboxCaption.textContent = photos[index].caption || '';
+
     lightbox.classList.add('active');
-    
-    // Ferma l'auto-scroll mentre il lightbox è aperto
     stopAutoScroll();
 }
 
-// ============================================
-// FUNZIONE: closeLightbox()
-// ============================================
-// Scopo:
-// Chiude il lightbox e ricomincia l'auto-scroll
-
 function closeLightbox() {
     const lightbox = document.getElementById('photoLightbox');
-    lightbox.classList.remove('active');
-    
-    // Ricomincia l'auto-scroll
+    if (lightbox) lightbox.classList.remove('active');
     startAutoScroll();
 }

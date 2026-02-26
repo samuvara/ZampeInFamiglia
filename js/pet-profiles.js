@@ -1,0 +1,365 @@
+/**
+ * pet-profiles.js  —  Zampe da Ricordare
+ * ========================================
+ * Classe PetProfiles che gestisce:
+ *  - Dati dei pet (array di oggetti)
+ *  - Rendering delle card
+ *  - Filtro per tipo animale
+ *  - Modal di dettaglio
+ *
+ * Inserire DOPO script.js e booking.js.
+ * ========================================
+ */
+
+class PetProfiles {
+
+    /**
+     * @param {string} gridSelector    - Selettore del contenitore delle card
+     * @param {string} filterSelector  - Selettore della barra filtri
+     * @param {string} modalSelector   - Selettore dell'overlay modal
+     */
+    constructor(gridSelector = '#profilesGrid',
+                filterSelector = '#profilesFilter',
+                modalSelector = '#petModal') {
+
+        this.grid   = document.querySelector(gridSelector);
+        this.filter = document.querySelector(filterSelector);
+        this.modal  = document.querySelector(modalSelector);
+        this.modalContent = document.querySelector('#modalContent');
+        this.modalClose   = document.querySelector('#modalClose');
+
+        this.currentFilter = 'all';
+        this.pets = [];            // Popolato con addPet() o setPets()
+        this._idCounter = 1;
+
+        this._bindFilterButtons();
+        this._bindModal();
+    }
+
+    /* ─────────────────────────────────────────
+       DATI  —  come aggiungere / impostare pet
+       ───────────────────────────────────────── */
+
+    /**
+     * Imposta l'intera lista di pet in una volta.
+     * @param {PetData[]} petsArray
+     */
+    setPets(petsArray) {
+        this.pets = petsArray.map((p, i) => ({ _id: i + 1, ...p }));
+        this._idCounter = this.pets.length + 1;
+        this.render();
+    }
+
+    /**
+     * Aggiunge un singolo pet alla lista e rieffettua il render.
+     * @param {PetData} petData
+     */
+    addPet(petData) {
+        this.pets.push({ _id: this._idCounter++, ...petData });
+        this.render();
+    }
+
+    /* ─────────────────────────────────────────
+       RENDER
+       ───────────────────────────────────────── */
+
+    render() {
+        if (!this.grid) return;
+        this.grid.innerHTML = '';
+
+        const filtered = this.currentFilter === 'all'
+            ? this.pets
+            : this.pets.filter(p => p.tipo === this.currentFilter);
+
+        if (filtered.length === 0) {
+            this.grid.innerHTML = `<div class="profiles-empty">Nessun amico peloso trovato 🐾</div>`;
+            return;
+        }
+
+        filtered.forEach((pet, idx) => {
+            const card = this._buildCard(pet);
+            card.style.animationDelay = `${idx * 0.08}s`;
+            this.grid.appendChild(card);
+        });
+    }
+
+    /* ─────────────────────────────────────────
+       BUILD CARD
+       ───────────────────────────────────────── */
+
+    _buildCard(pet) {
+        const card = document.createElement('article');
+        card.className = 'pet-card';
+        card.dataset.tipo = pet.tipo || 'altro';
+        card.dataset.petId = pet._id;
+
+        /* Foto o emoji fallback */
+        const photoHTML = pet.foto
+            ? `<img src="${pet.foto}" alt="Foto di ${pet.nome}" loading="lazy">`
+            : `<span>${pet.emoji || this._defaultEmoji(pet.tipo)}</span>`;
+
+        /* Badges speciali */
+        const badgesHTML = (pet.badges || [])
+            .map(b => `<span class="badge badge--${b.tipo || 'special'}">${b.etichetta}</span>`)
+            .join('');
+
+        /* Info grid */
+        const infoItems = [
+            { label: '🐾 Specie',   value: this._capitalize(pet.tipo)   },
+            { label: '🧬 Razza',    value: pet.razza  || '—'            },
+            { label: '🎂 Età',      value: pet.eta    || '—'            },
+            { label: '⚤ Sesso',     value: pet.sesso  || '—'            },
+        ];
+
+        const infoHTML = infoItems.map(i => `
+            <div class="card-info-item">
+                <div class="card-info-label">${i.label}</div>
+                <div class="card-info-value">${i.value}</div>
+            </div>`).join('');
+
+        /* Tags / caratteristiche */
+        const tagsHTML = (pet.caratteristiche || [])
+            .map(t => `<span class="card-tag">${t}</span>`)
+            .join('');
+
+        card.innerHTML = `
+            <div class="card-stripe"></div>
+            <div class="card-photo-wrap">
+                <div class="card-photo">${photoHTML}</div>
+                <div class="card-badge">${badgesHTML}</div>
+            </div>
+            <div class="card-body">
+                <div class="card-id">N° ${String(pet._id).padStart(3,'0')}</div>
+                <h2 class="card-name">${pet.nome}</h2>
+                <div class="card-razza">${pet.razza || ''}</div>
+                <div class="card-info-grid">${infoHTML}</div>
+                <div class="card-tags">${tagsHTML}</div>
+                ${pet.bio ? `<p class="card-bio">"${pet.bio}"</p>` : ''}
+                <div class="card-cta">Scopri di più →</div>
+            </div>`;
+
+        card.addEventListener('click', () => this._openModal(pet));
+        return card;
+    }
+
+    /* ─────────────────────────────────────────
+       MODAL
+       ───────────────────────────────────────── */
+
+    _openModal(pet) {
+        if (!this.modal || !this.modalContent) return;
+
+        const photoHTML = pet.foto
+            ? `<img src="${pet.foto}" alt="Foto di ${pet.nome}">`
+            : `<span>${pet.emoji || this._defaultEmoji(pet.tipo)}</span>`;
+
+        const badgesHTML = (pet.badges || [])
+            .map(b => `<span class="badge badge--${b.tipo || 'special'}">${b.etichetta}</span>`)
+            .join('');
+
+        const allInfo = [
+            { label: '🐾 Specie',   value: this._capitalize(pet.tipo)       },
+            { label: '🧬 Razza',    value: pet.razza    || '—'              },
+            { label: '🎂 Età',      value: pet.eta      || '—'              },
+            { label: '⚤ Sesso',     value: pet.sesso    || '—'              },
+            { label: '🩺 Salute',   value: pet.salute   || '—'              },
+            { label: '🍗 Dieta',    value: pet.dieta    || '—'              },
+        ].filter(i => i.value !== '—');
+
+        const infoHTML = allInfo.map(i => `
+            <div class="modal-info-item">
+                <div class="card-info-label">${i.label}</div>
+                <div class="card-info-value">${i.value}</div>
+            </div>`).join('');
+
+        const tagsHTML = (pet.caratteristiche || [])
+            .map(t => `<span class="card-tag">${t}</span>`)
+            .join('');
+
+        this.modalContent.innerHTML = `
+            <div class="modal-header">
+                <div class="modal-photo">${photoHTML}</div>
+                <div>
+                    <h2 class="modal-name" id="modalPetName">${pet.nome}</h2>
+                    <div class="modal-razza">${pet.razza || ''}</div>
+                    <div class="modal-badges">${badgesHTML}</div>
+                </div>
+            </div>
+
+            <div class="modal-section-title">📋 Carta d'Identità</div>
+            <div class="modal-info-grid">${infoHTML}</div>
+
+            ${tagsHTML ? `<div class="modal-section-title">✨ Caratteristiche</div>
+            <div class="modal-tags">${tagsHTML}</div>` : ''}
+
+            ${pet.bio ? `<div class="modal-section-title">💬 La sua storia</div>
+            <p class="modal-bio">"${pet.bio}"</p>` : ''}
+
+
+        `;
+
+        this.modal.classList.add('open');
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    _closeModal() {
+        if (!this.modal) return;
+        this.modal.classList.remove('open');
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    _bindModal() {
+        if (!this.modal) return;
+        this.modalClose?.addEventListener('click', () => this._closeModal());
+        this.modal.addEventListener('click', e => {
+            if (e.target === this.modal) this._closeModal();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') this._closeModal();
+        });
+    }
+
+    /* ─────────────────────────────────────────
+       FILTRI
+       ───────────────────────────────────────── */
+
+    _bindFilterButtons() {
+        if (!this.filter) return;
+        this.filter.addEventListener('click', e => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+            this.filter.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.currentFilter = btn.dataset.filter || 'all';
+            this.render();
+        });
+    }
+
+    /* ─────────────────────────────────────────
+       HELPERS
+       ───────────────────────────────────────── */
+
+    _capitalize(str) {
+        if (!str) return '—';
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    _defaultEmoji(tipo) {
+        const map = { cane: '🐶', gatto: '🐱', coniglio: '🐰', criceto: '🐹', uccello: '🦜', tartaruga: '🐢' };
+        return map[tipo] || '🐾';
+    }
+}
+
+/* ==============================================
+   DATI DEI PET  —  modifica/aggiungi qui i tuoi!
+   ==============================================
+
+   Struttura di un oggetto pet:
+   {
+     nome:            'Luna',          // obbligatorio
+     tipo:            'cane',          // cane | gatto | altro
+     razza:           'Labrador',
+     eta:             '8 anni',
+     sesso:           'Femmina',
+     salute:          'Non vedente',
+     dieta:           'Cibo secco senior',
+     caratteristiche: ['Dolcissima', 'Ama le coccole', 'Cieca'],
+     badges: [
+       { etichetta: '👁️ Non vedente', tipo: 'blind' },
+       { etichetta: '🌟 Speciale',    tipo: 'special' }
+     ],
+     bio:             'Luna ha perso la vista a 5 anni ma non ha mai perso il sorriso!',
+     emoji:           '🐶',   // usato se non c'è foto
+     foto:            '',      // path relativo o URL, lascia '' per usare emoji
+   }
+   ============================================== */
+
+const petData = [
+    {
+        nome: 'Maggy',
+        tipo: 'cane',
+        razza: 'Jack Russel',
+        eta: '15 anni',
+        sesso: 'Femmina',
+        salute: 'Non vedente al 100%',
+        dieta: 'Un po` di tutto',
+        caratteristiche: ['Dolcissima', 'Ama le coccole', 'Non vede benissimo', 'Obbediente'],
+        badges: [
+            { etichetta: '👁️ Non vedente', tipo: 'blind' },
+            { etichetta: '🌟 Speciale',    tipo: 'special' }
+        ],
+        bio: 'Maggy ha avuto un incidente per cui ha parzialmente perso la visto ma non ha mai perso il sorriso. È molto vivace e coccolosa e come piace dire al padrone, è un Carro Armato!',
+        emoji: '🐶',
+        foto: '../images/pet_photo/maggy.jpeg'
+    },
+    {
+        nome: 'Tommy',
+        tipo: 'cane',
+        razza: 'Barboncino',
+        eta: '10',
+        sesso: 'Maschio',
+        salute: 'Perfetta salute',
+        dieta: 'Dieta secca per senior',
+        caratteristiche: ['Coccoloso', 'Attivo', 'Curioso', 'Intelligente'],
+        badges: [
+            { etichetta: '🔎 Ricercatore', tipo: 'mid-senior' }
+        ],
+        bio: 'Tommy è un curiosone, ama le persone ma un po` meno gli altri cani e quando si esce camminerebbe per ore! È molto intelligente, capisce ciò che gli viene detto ed è addestrato per la ricerca in superficie, un ricercatore!',
+        emoji: '🐕',
+        foto: ''
+    },
+    {
+        nome: 'Axel',
+        tipo: 'cane',
+        razza: 'Incrocio Barboncino e Maltese',
+        eta: '9 anni',
+        sesso: 'Maschio',
+        salute: 'Ottima',
+        dieta: 'Mix umido e secco',
+        caratteristiche: ['Curioso', 'Giocherellone', 'Pigro', 'Coccolosissimo'],
+        badges: [],
+        bio: 'Axel è un coccolone, si farebbe coccolare per ore senza mai averne abbastanaza! È un mangione e se la giornata è bella vuole rimanere fuori per ore, altrimenti bisognini e via. È un po` scemotto ma se la cosa gli interessa diventa furbissimo!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/axel.webp'
+    },
+    {
+        nome: 'Margherita',
+        tipo: 'gatto',
+        razza: 'Ragdoll',
+        eta: '6 anni',
+        sesso: 'Femmina',
+        salute: 'Ottima',
+        dieta: 'Solo cibo premium umido',
+        caratteristiche: ['Coccolona', 'Pigra', 'Silenziosa', 'Elegante'],
+        badges: [
+            { etichetta: '👑 Principessa', tipo: 'special' }
+        ],
+        bio: 'Margherita ha deciso che il divano è suo per diritto divino. Non si discute.',
+        emoji: '😻',
+        foto: ''
+    },
+    {
+        nome: 'Fiocco',
+        tipo: 'altro',
+        razza: 'Coniglio Nano',
+        eta: '2 anni',
+        sesso: 'Maschio',
+        salute: 'Ottima',
+        dieta: 'Fieno, verdure fresche',
+        caratteristiche: ['Timido', 'Curioso', 'Ama il fieno', 'Saltellante'],
+        badges: [],
+        bio: 'Fiocco ci ha messo una settimana a fidarsi, poi non se n\'è più andato dal grembo.',
+        emoji: '🐰',
+        foto: ''
+    }
+];
+
+/* ── INIZIALIZZAZIONE ── */
+document.addEventListener('DOMContentLoaded', () => {
+    const profiles = new PetProfiles('#profilesGrid', '#profilesFilter', '#petModal');
+    profiles.setPets(petData);
+    // Rendi accessibile globalmente se serve aggiunte dinamiche
+    window.petProfilesInstance = profiles;
+});

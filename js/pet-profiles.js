@@ -29,31 +29,30 @@ class PetProfiles {
         this.modalClose   = document.querySelector('#modalClose');
 
         this.currentFilter = 'all';
-        this.pets = [];            // Popolato con addPet() o setPets()
+        this.pets = [];
         this._idCounter = 1;
+        this._historyPushed = false;
+
+        // Touch/swipe state
+        this._touchStartY = 0;
+        this._touchCurrentY = 0;
+        this._isDragging = false;
 
         this._bindFilterButtons();
         this._bindModal();
+        this._bindBackButton();
     }
 
     /* ─────────────────────────────────────────
-       DATI  —  come aggiungere / impostare pet
+       DATI
        ───────────────────────────────────────── */
 
-    /**
-     * Imposta l'intera lista di pet in una volta.
-     * @param {PetData[]} petsArray
-     */
     setPets(petsArray) {
         this.pets = petsArray.map((p, i) => ({ _id: i + 1, ...p }));
         this._idCounter = this.pets.length + 1;
         this.render();
     }
 
-    /**
-     * Aggiunge un singolo pet alla lista e rieffettua il render.
-     * @param {PetData} petData
-     */
     addPet(petData) {
         this.pets.push({ _id: this._idCounter++, ...petData });
         this.render();
@@ -93,17 +92,14 @@ class PetProfiles {
         card.dataset.tipo = pet.tipo || 'altro';
         card.dataset.petId = pet._id;
 
-        /* Foto o emoji fallback */
         const photoHTML = pet.foto
             ? `<img src="${pet.foto}" alt="Foto di ${pet.nome}" loading="lazy">`
             : `<span>${pet.emoji || this._defaultEmoji(pet.tipo)}</span>`;
 
-        /* Badges speciali */
         const badgesHTML = (pet.badges || [])
             .map(b => `<span class="badge badge--${b.tipo || 'special'}">${b.etichetta}</span>`)
             .join('');
 
-        /* Info grid */
         const infoItems = [
             { label: '🐾 Specie',   value: this._capitalize(pet.tipo)   },
             { label: '🧬 Razza',    value: pet.razza  || '—'            },
@@ -117,7 +113,6 @@ class PetProfiles {
                 <div class="card-info-value">${i.value}</div>
             </div>`).join('');
 
-        /* Tags / caratteristiche */
         const tagsHTML = (pet.caratteristiche || [])
             .map(t => `<span class="card-tag">${t}</span>`)
             .join('');
@@ -148,6 +143,10 @@ class PetProfiles {
 
     _openModal(pet) {
         if (!this.modal || !this.modalContent) return;
+
+        // Push uno stato nella history per intercettare il tasto Back del browser
+        history.pushState({ petModal: true }, '', '#pet-' + (pet.nome || '').toLowerCase().replace(/\s+/g, '-'));
+        this._historyPushed = true;
 
         const photoHTML = pet.foto
             ? `<img src="${pet.foto}" alt="Foto di ${pet.nome}">`
@@ -195,30 +194,157 @@ class PetProfiles {
             ${pet.bio ? `<div class="modal-section-title">💬 La sua storia</div>
             <p class="modal-bio">"${pet.bio}"</p>` : ''}
 
-
+            <div class="modal-keyboard-hint">
+                <kbd>Esc</kbd> per chiudere &nbsp;·&nbsp; o clicca fuori
+            </div>
         `;
 
         this.modal.classList.add('open');
         this.modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+
+        // Attiva gesture swipe-to-close su mobile
+        this._bindSwipeToClose();
     }
 
     _closeModal() {
         if (!this.modal) return;
-        this.modal.classList.remove('open');
-        this.modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+
+        // Se abbiamo pushato uno stato, torna indietro nella history
+        // senza triggerare di nuovo il popstate
+        if (this._historyPushed) {
+            this._historyPushed = false;
+            history.back();
+            // Il popstate si occuperà di chiamare _doCloseModal()
+            return;
+        }
+
+        this._doCloseModal();
+    }
+
+    _doCloseModal() {
+        if (!this.modal) return;
+        const petModal = document.querySelector('.pet-modal');
+
+        // Animazione di uscita
+        petModal.classList.add('closing');
+
+        setTimeout(() => {
+            this.modal.classList.remove('open');
+            this.modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            petModal.classList.remove('closing');
+            petModal.style.transform = '';
+        }, 280);
+
+        this._unbindSwipeToClose();
     }
 
     _bindModal() {
         if (!this.modal) return;
+
+        // Pulsante X
         this.modalClose?.addEventListener('click', () => this._closeModal());
+
+        // Click sull'overlay esterno
         this.modal.addEventListener('click', e => {
             if (e.target === this.modal) this._closeModal();
         });
+
+        // Tasto Escape
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') this._closeModal();
+            if (e.key === 'Escape' && this.modal.classList.contains('open')) {
+                this._closeModal();
+            }
         });
+    }
+
+    /* ─────────────────────────────────────────
+       TASTO BACK DEL BROWSER
+       ───────────────────────────────────────── */
+
+    _bindBackButton() {
+        window.addEventListener('popstate', (e) => {
+            // Se il modal è aperto e si preme Back, chiudiamo il modal
+            if (this.modal && this.modal.classList.contains('open')) {
+                this._historyPushed = false; // evita loop
+                this._doCloseModal();
+            }
+        });
+    }
+
+    /* ─────────────────────────────────────────
+       SWIPE TO CLOSE (mobile)
+       ───────────────────────────────────────── */
+
+    _bindSwipeToClose() {
+        const petModal = document.querySelector('.pet-modal');
+        if (!petModal) return;
+
+        this._onTouchStart = (e) => {
+            // Solo se siamo in cima al modal (scroll = 0)
+            if (petModal.scrollTop > 10) return;
+            this._touchStartY = e.touches[0].clientY;
+            this._isDragging = true;
+            petModal.style.transition = 'none';
+        };
+
+        this._onTouchMove = (e) => {
+            if (!this._isDragging) return;
+            if (petModal.scrollTop > 10) {
+                this._isDragging = false;
+                petModal.style.transition = '';
+                petModal.style.transform = '';
+                return;
+            }
+            const delta = e.touches[0].clientY - this._touchStartY;
+            if (delta < 0) return; // non permettere swipe verso l'alto
+            this._touchCurrentY = delta;
+
+            // Resistenza visiva: rallenta la trascinata
+            const resistance = delta / (delta + 120);
+            const translateY = delta * resistance * 1.8;
+            const opacity = Math.max(0.3, 1 - delta / 400);
+            petModal.style.transform = `translateY(${translateY}px) scale(${1 - delta * 0.0003})`;
+            document.querySelector('.pet-modal-overlay').style.background = `rgba(0,0,0,${opacity * 0.52})`;
+        };
+
+        this._onTouchEnd = (e) => {
+            if (!this._isDragging) return;
+            this._isDragging = false;
+            petModal.style.transition = '';
+
+            const delta = this._touchCurrentY;
+
+            if (delta > 100) {
+                // Swipe sufficiente → chiudi
+                petModal.style.transform = `translateY(110%)`;
+                document.querySelector('.pet-modal-overlay').style.background = 'rgba(0,0,0,0)';
+                setTimeout(() => {
+                    petModal.style.transform = '';
+                    document.querySelector('.pet-modal-overlay').style.background = '';
+                    this._closeModal();
+                }, 280);
+            } else {
+                // Rimbalzo indietro
+                petModal.style.transform = 'translateY(0) scale(1)';
+                document.querySelector('.pet-modal-overlay').style.background = '';
+            }
+
+            this._touchCurrentY = 0;
+        };
+
+        petModal.addEventListener('touchstart', this._onTouchStart, { passive: true });
+        petModal.addEventListener('touchmove',  this._onTouchMove,  { passive: true });
+        petModal.addEventListener('touchend',   this._onTouchEnd);
+    }
+
+    _unbindSwipeToClose() {
+        const petModal = document.querySelector('.pet-modal');
+        if (!petModal || !this._onTouchStart) return;
+        petModal.removeEventListener('touchstart', this._onTouchStart);
+        petModal.removeEventListener('touchmove',  this._onTouchMove);
+        petModal.removeEventListener('touchend',   this._onTouchEnd);
     }
 
     /* ─────────────────────────────────────────
@@ -253,30 +379,24 @@ class PetProfiles {
 }
 
 /* ==============================================
-   DATI DEI PET  —  modifica/aggiungi qui i tuoi!
-   ==============================================
-
-   Struttura di un oggetto pet:
-   {
-     nome:            'Luna',          // obbligatorio
-     tipo:            'cane',          // cane | gatto | altro
-     razza:           'Labrador',
-     eta:             '8 anni',
-     sesso:           'Femmina',
-     salute:          'Non vedente',
-     dieta:           'Cibo secco senior',
-     caratteristiche: ['Dolcissima', 'Ama le coccole', 'Cieca'],
-     badges: [
-       { etichetta: '👁️ Non vedente', tipo: 'blind' },
-       { etichetta: '🌟 Speciale',    tipo: 'special' }
-     ],
-     bio:             'Luna ha perso la vista a 5 anni ma non ha mai perso il sorriso!',
-     emoji:           '🐶',   // usato se non c'è foto
-     foto:            '',      // path relativo o URL, lascia '' per usare emoji
-   }
+   DATI DEI PET
    ============================================== */
 
 const petData = [
+    {
+        nome: 'Axel',
+        tipo: 'cane',
+        razza: 'Incrocio Barboncino e Maltese',
+        eta: '9 anni',
+        sesso: 'Maschio',
+        salute: 'Ottima',
+        dieta: 'Mix umido e secco',
+        caratteristiche: ['Curioso', 'Giocherellone', 'Pigro', 'Coccolosissimo'],
+        badges: [],
+        bio: 'Axel è un coccolone, si farebbe coccolare per ore senza mai averne abbastanaza! È un mangione e se la giornata è bella vuole rimanere fuori per ore, altrimenti bisognini e via. È un po` scemotto ma se la cosa gli interessa diventa furbissimo!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/axel.webp'
+    },
     {
         nome: 'Maggy',
         tipo: 'cane',
@@ -309,20 +429,6 @@ const petData = [
         bio: 'Tommy è un curiosone, ama le persone ma un po` meno gli altri cani e quando si esce camminerebbe per ore! È molto intelligente, capisce ciò che gli viene detto ed è addestrato per la ricerca in superficie, un ricercatore!',
         emoji: '🐕',
         foto: ''
-    },
-    {
-        nome: 'Axel',
-        tipo: 'cane',
-        razza: 'Incrocio Barboncino e Maltese',
-        eta: '9 anni',
-        sesso: 'Maschio',
-        salute: 'Ottima',
-        dieta: 'Mix umido e secco',
-        caratteristiche: ['Curioso', 'Giocherellone', 'Pigro', 'Coccolosissimo'],
-        badges: [],
-        bio: 'Axel è un coccolone, si farebbe coccolare per ore senza mai averne abbastanaza! È un mangione e se la giornata è bella vuole rimanere fuori per ore, altrimenti bisognini e via. È un po` scemotto ma se la cosa gli interessa diventa furbissimo!',
-        emoji: '🐕',
-        foto: '../images/pet_photo/axel.webp'
     },
     {
         nome: 'Margherita',
@@ -360,6 +466,5 @@ const petData = [
 document.addEventListener('DOMContentLoaded', () => {
     const profiles = new PetProfiles('#profilesGrid', '#profilesFilter', '#petModal');
     profiles.setPets(petData);
-    // Rendi accessibile globalmente se serve aggiunte dinamiche
     window.petProfilesInstance = profiles;
 });

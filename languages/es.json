@@ -9,7 +9,7 @@
   "zim_title_services": "Servicios - Zampe in Famiglia",
   "zim_title_contacts": "Contactos - Zampe in Famiglia",
   "zim_subtitle": "Cuidado de mascotas de confianza para perros, gatos y animales domésticos",
-  "booknow": "Reserva Ahora",
+  "check_availability": "Comprueba la disponibilidad",
 
   "intro_title": "Bienvenido a nuestro servicio",
   "intro_paragraph1": "Cuidamos a tus mascotas como si fueran las nuestras. Con años de experiencia y pasión infinita, garantizamos a tus amigos peludos una experiencia segura, divertida y llena de amor.",
@@ -18,10 +18,10 @@
   "gallery_title": "¡Galería fotográfica de nuestros amigos animales!",
 
   "calendar_title": "📅 Calendario de Reservas",
-  "calendar_description": "Selecciona la fecha y el horario que prefieras para el servicio de cuidado de perros",
+  "calendar_description": "Comprueba si la fecha y la hora que prefieres para el servicio están disponibles.",
   "calendar_loading": "Cargando calendario...",
 
-  "map_title": "📍 Dónde Encontrarnos",
+  "map_title": "📍 Punto de encuentro",
   "map_description": "¡Ven a visitarnos! Estamos cerca del McDonald's de Via Francesco Baracca, Florencia",
   "map_address_label": "Dirección",
   "map_address_line1": "Cerca del McDonald's",

@@ -9,7 +9,7 @@
   "zim_title_services": "Servizi - Zampe in Famiglia",
   "zim_title_contacts": "Contatti - Zampe in Famiglia",
   "zim_subtitle": "Pet sitting affidabile per cani, gatti e animali domestici",
-  "booknow": "Prenota Ora",
+  "check_availability": "Controlla le disponibilità",
 
   "intro_title": "Benvenuto nel nostro servizio",
   "intro_paragraph1": "Ci prendiamo cura dei tuoi animali domestici come se fossero i nostri. Con anni di esperienza e passione infinita, garantiamo ai tuoi amici pelosi un'esperienza sicura, divertente e piena d'amore.",
@@ -18,10 +18,10 @@
   "gallery_title": "Galleria fotografica dei nostri amici animali!",
 
   "calendar_title": "📅 Calendario Prenotazioni",
-  "calendar_description": "Seleziona la data e l'orario che preferisci per il servizio di dog sitting",
+  "calendar_description": "Controlla se la data e l'orario che preferisci per il servizio è libera",
   "calendar_loading": "Caricamento calendario...",
 
-  "map_title": "📍 Dove Ci Troviamo",
+  "map_title": "📍 Punto di Ritrovo",
   "map_description": "Vieni a trovarci! Siamo in zona McDonald's di Via Francesco Baracca, Firenze",
   "map_address_label": "Indirizzo",
   "map_address_line1": "Zona McDonald's",

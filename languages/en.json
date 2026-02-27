@@ -9,7 +9,7 @@
   "zim_title_services": "Services - Zampe in Famiglia",
   "zim_title_contacts": "Contacts - Zampe in Famiglia",
   "zim_subtitle": "Reliable pet sitting for dogs, cats and domestic animals",
-  "booknow": "Book Now",
+  "check_availability": "Check availability",
 
   "intro_title": "Welcome to our service",
   "intro_paragraph1": "We take care of your pets as if they were our own. With years of experience and endless passion, we guarantee your furry friends a safe, fun and loving experience.",
@@ -18,10 +18,10 @@
   "gallery_title": "Photo gallery of our animal friends!",
 
   "calendar_title": "📅 Booking Calendar",
-  "calendar_description": "Select the date and time you prefer for the dog sitting service",
+  "calendar_description": "Check if your preferred date and time for the service is available.",
   "calendar_loading": "Loading calendar...",
 
-  "map_title": "📍 Where to Find Us",
+  "map_title": "📍 Meeting Point",
   "map_description": "Come visit us! We are near McDonald's on Via Francesco Baracca, Florence",
   "map_address_label": "Address",
   "map_address_line1": "Near McDonald's",

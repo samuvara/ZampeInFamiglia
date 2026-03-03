@@ -773,29 +773,53 @@ header::before {
 /* ============================================
    DECORATIVE PAW PRINTS
    ============================================ */
-
 .paw {
     position: absolute;
     font-size: 3rem;
-    opacity: 0.1;
+    opacity: 0.2;
     animation: pawFloat 15s ease-in-out infinite;
 }
 
+/* Mobile-first: distribuite su tutta l'altezza */
 .paw:nth-child(1) {
-    top: 10%;
-    left: 15%;
+    top: 8%;
+    left: 10%;
     animation-delay: 0s;
 }
 
 .paw:nth-child(2) {
-    top: 85%;
-    left: 30%;
-    animation-delay: 0s;
+    top: 22%;
+    right: 8%;
+    animation-delay: 2s;
 }
 
 .paw:nth-child(3) {
-    top: 30%;
+    top: 38%;
+    left: 20%;
+    animation-delay: 5s;
+}
+
+.paw:nth-child(4) {
+    top: 52%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.paw:nth-child(5) {
+    top: 66%;
+    left: 5%;
+    animation-delay: 3.5s;
+}
+
+.paw:nth-child(6) {
+    top: 80%;
     right: 5%;
+    animation-delay: 6s;
+}
+
+.paw:nth-child(7) {
+    top: 92%;
+    left: 35%;
     animation-delay: 4s;
 }
 
@@ -895,7 +919,7 @@ header::before {
 
 /* Calendar Section */
 .calendar-section {
-    padding: 4rem 0;
+    /* padding: 4rem 0; */
     background: var(--background);
 }
 
@@ -1485,7 +1509,9 @@ header::before {
     justify-content: center;
     cursor: pointer;
     position: relative;
-    background: #000 /* var(--light) */;
+    background: #000
+        /* var(--light) */
+    ;
     transition: transform 0.3s ease;
     overflow: hidden;
 }
@@ -1497,7 +1523,8 @@ header::before {
 .slider-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* cover; metto contain per mostra le immagini per intero*/
+    object-fit: contain;
+    /* cover; metto contain per mostra le immagini per intero*/
     object-position: center;
     display: block;
     transition: filter 0.3s ease;

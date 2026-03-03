@@ -430,9 +430,9 @@ const petData = [
         emoji: '🐕',
         foto: ''
     },
-    {
-        nome: 'Margherita',
-        tipo: 'gatto',
+    /* {
+        nome: 'Schizzo & Lola',
+        tipo: 'cane',
         razza: 'Ragdoll',
         eta: '6 anni',
         sesso: 'Femmina',
@@ -443,10 +443,11 @@ const petData = [
             { etichetta: '👑 Principessa', tipo: 'special' }
         ],
         bio: 'Margherita ha deciso che il divano è suo per diritto divino. Non si discute.',
-        emoji: '😻',
+        emoji: '🐕',
         foto: ''
-    },
-    {
+    }, */
+
+    /* {
         nome: 'Fiocco',
         tipo: 'altro',
         razza: 'Coniglio Nano',
@@ -459,7 +460,7 @@ const petData = [
         bio: 'Fiocco ci ha messo una settimana a fidarsi, poi non se n\'è più andato dal grembo.',
         emoji: '🐰',
         foto: ''
-    }
+    } */
 ];
 
 /* ── INIZIALIZZAZIONE ── */

@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang="zim_title_contacts">Contatti - Zampe in Famiglia</title>
+    <title>Contatti - Zampe in Famiglia</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lora:wght@400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contacts.css">
 </head>
 
 <body>
+
     <!-- Hamburger Menu Button -->
     <button class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </button>
 
     <!-- Side Navigation -->
@@ -24,89 +24,269 @@
             <li><a href="../index.html" data-lang="nav_home">Home</a></li>
             <li><a href="services_prices.html" data-lang="nav_services">Servizi</a></li>
             <li><a href="booking.html" data-lang="nav_booking">Prenotazione</a></li>
-            <li><a href="pet_profiles.html" class="active">Zampe da Ricordare</a></li>
-            <!-- <li><a href="pages/gallery.html">Galleria</a></li> -->
-            <li><a href="contacts.html" data-lang="nav_contacts">Contatti</a></li>
+            <li><a href="pet_profiles.html">Zampe da Ricordare</a></li>
+            <li><a href="contacts.html" class="active" data-lang="nav_contacts">Contatti</a></li>
         </ul>
     </nav>
 
     <!-- Header/Banner -->
-    <header>
-        <div class="paw">🐾</div>
-        <div class="paw">🐾</div>
-        <div class="paw">🐾</div>
+    <header class="header-small">
 
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        
+        <div class="banner-content">
+            <h1>Scrivici!</h1>
+            <p>Siamo qui per ogni domanda sui tuoi amici pelosi 🐾</p>
+        </div>
     </header>
 
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="contacts-page">
 
+        <!-- Sezione contatti -->
+        <section class="contacts-section">
+            <div class="contacts-intro">
+                <span class="contacts-intro__deco">📬</span>
+                <h2 class="contacts-intro__title">Come raggiungerci</h2>
+                <p class="contacts-intro__sub">Scegli il canale che preferisci, ti rispondiamo il prima possibile!</p>
+            </div>
+
+            <div class="contact-cards">
+
+                <!-- Email -->
+                <a href="mailto:zampeinfamiglia.firenze@gmail.com" class="contact-card contact-card--email"
+                    aria-label="Scrivici una email">
+                    <div class="contact-card__icon-wrap">
+                        <span class="contact-card__icon">✉️</span>
+                    </div>
+                    <div class="contact-card__body">
+                        <div class="contact-card__label">Email</div>
+                        <div class="contact-card__value">zampeinfamiglia.firenze@gmail.com</div>
+                        <div class="contact-card__hint">Clicca per scriverci →</div>
+                    </div>
+                </a>
+
+                <!-- Telefono -->
+                <a href="tel:+39NUMEROQUI" class="contact-card contact-card--phone" id="phoneCard"
+                    aria-label="Chiamaci">
+                    <div class="contact-card__icon-wrap">
+                        <span class="contact-card__icon">📞</span>
+                    </div>
+                    <div class="contact-card__body">
+                        <div class="contact-card__label">Telefono</div>
+                        <div class="contact-card__value" id="phoneNumber">+39 000 000 0000</div>
+                        <div class="contact-card__hint">Clicca per chiamare →</div>
+                    </div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/39NUMEROQUI?text=Ciao!%20Vorrei%20avere%20informazioni%20sui%20vostri%20servizi%20🐾"
+                    class="contact-card contact-card--whatsapp" target="_blank" rel="noopener noreferrer"
+                    id="whatsappCard" aria-label="Scrivici su WhatsApp">
+                    <div class="contact-card__icon-wrap">
+                        <span class="contact-card__icon">
+                            <!-- WhatsApp SVG logo ufficiale -->
+                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="wa-logo">
+                                <circle cx="24" cy="24" r="24" fill="#25D366" />
+                                <path
+                                    d="M34.507 13.453C32.07 11.01 28.72 9.5 25.02 9.5c-7.62 0-13.82 6.2-13.82 13.82 0 2.44.64 4.82 1.86 6.92L11 38.5l8.46-2.22c2.02 1.1 4.3 1.68 6.62 1.68h.01c7.62 0 13.82-6.2 13.82-13.82 0-3.69-1.44-7.16-4.41-10.7zm-9.49 21.26h-.01c-2.07 0-4.1-.56-5.87-1.61l-.42-.25-4.36 1.14 1.16-4.24-.27-.44c-1.16-1.84-1.77-3.97-1.77-6.16 0-6.38 5.19-11.57 11.57-11.57 3.09 0 5.99 1.2 8.17 3.39 2.18 2.18 3.38 5.09 3.38 8.18-.01 6.38-5.2 11.56-11.58 11.56zm6.35-8.67c-.35-.17-2.05-1.01-2.37-1.13-.32-.12-.55-.17-.78.17-.23.35-.89 1.13-1.09 1.36-.2.23-.4.26-.75.09-.35-.17-1.47-.54-2.8-1.73-1.03-.92-1.73-2.06-1.93-2.41-.2-.35-.02-.54.15-.71.15-.15.35-.4.52-.6.17-.2.23-.35.35-.58.12-.23.06-.43-.03-.6-.09-.17-.78-1.88-1.07-2.57-.28-.67-.57-.58-.78-.59-.2-.01-.43-.01-.66-.01-.23 0-.6.09-.91.43-.32.35-1.2 1.17-1.2 2.86s1.23 3.31 1.4 3.54c.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.05-.84 2.34-1.65.29-.81.29-1.5.2-1.65-.09-.14-.32-.23-.67-.4z"
+                                    fill="white" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="contact-card__body">
+                        <div class="contact-card__label">WhatsApp Business</div>
+                        <div class="contact-card__value">Scrivici direttamente</div>
+                        <div class="contact-card__hint">Apri la chat →</div>
+                    </div>
+                    <span class="wa-badge">Business</span>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Divisore decorativo -->
+        <div class="paw-divider" aria-hidden="true">
+            <span>🐾</span>
+            <div class="paw-divider__line"></div>
+            <span>Seguici sui social</span>
+            <div class="paw-divider__line"></div>
+            <span>🐾</span>
+        </div>
+
+        <!-- Sezione social -->
+        <section class="socials-section">
+            <p class="socials-intro">Guarda cosa combiniamo ogni giorno con i nostri amici a quattro zampe!</p>
+
+            <div class="socials-split">
+
+                <!-- Instagram -->
+                <div class="social-frame social-frame--instagram">
+                    <div class="social-frame__header">
+                        <span class="social-frame__dot social-frame__dot--red"></span>
+                        <span class="social-frame__dot social-frame__dot--yellow"></span>
+                        <span class="social-frame__dot social-frame__dot--green"></span>
+                        <span class="social-frame__url">instagram.com</span>
+                    </div>
+                    <div class="social-frame__screen">
+                        <a href="https://www.instagram.com/zampeinfamiglia/" target="_blank" rel="noopener noreferrer"
+                            class="social-frame__link" aria-label="Vai al nostro profilo Instagram">
+                            <div class="social-frame__profile">
+                                <div class="social-frame__avatar social-frame__avatar--ig">
+                                    🐾
+                                </div>
+                                <div class="social-frame__profile-info">
+                                    <div class="social-frame__username">@zampeinfamiglia</div>
+                                    <div class="social-frame__platform-name">
+                                        <!-- Instagram SVG icon -->
+                                        <svg viewBox="0 0 24 24" class="platform-icon" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <defs>
+                                                <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                    <stop offset="0%" style="stop-color:#f09433" />
+                                                    <stop offset="25%" style="stop-color:#e6683c" />
+                                                    <stop offset="50%" style="stop-color:#dc2743" />
+                                                    <stop offset="75%" style="stop-color:#cc2366" />
+                                                    <stop offset="100%" style="stop-color:#bc1888" />
+                                                </linearGradient>
+                                            </defs>
+                                            <rect width="24" height="24" rx="6" fill="url(#ig-grad)" />
+                                            <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8"
+                                                fill="none" />
+                                            <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
+                                            <rect x="2" y="2" width="20" height="20" rx="6" stroke="white"
+                                                stroke-width="1.5" fill="none" />
+                                        </svg>
+                                        Instagram
+                                    </div>
+                                </div>
+                                <div class="social-frame__follow-btn social-frame__follow-btn--ig">Seguici</div>
+                            </div>
+                            <div class="social-frame__preview-label">Ultimi post & Reel 🎬</div>
+                            <div class="social-frame__embed-hint">
+                                <span class="social-frame__embed-icon">📸</span>
+                                <span>Tocca per visitare il profilo</span>
+                            </div>
+                        </a>
+                        <!-- Embed widget Instagram (Elfsight o simile) — decommentare quando si inserisce il widget -->
+                        <!--
+                        <div class="elfsight-app-XXXXXXXX"></div>
+                        -->
+                    </div>
+                </div>
+
+                <!-- Divisore centrale -->
+                <div class="socials-divider" aria-hidden="true">
+                    <div class="socials-divider__line"></div>
+                    <span class="socials-divider__paw">🐾</span>
+                    <div class="socials-divider__line"></div>
+                </div>
+
+                <!-- Facebook -->
+                <div class="social-frame social-frame--facebook">
+                    <div class="social-frame__header">
+                        <span class="social-frame__dot social-frame__dot--red"></span>
+                        <span class="social-frame__dot social-frame__dot--yellow"></span>
+                        <span class="social-frame__dot social-frame__dot--green"></span>
+                        <span class="social-frame__url">facebook.com</span>
+                    </div>
+                    <div class="social-frame__screen">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                            class="social-frame__link" aria-label="Vai al nostro profilo Facebook">
+                            <div class="social-frame__profile">
+                                <div class="social-frame__avatar social-frame__avatar--tt">
+                                    🐾
+                                </div>
+                                <div class="social-frame__profile-info">
+                                    <div class="social-frame__username">@zampeinfamiglia</div>
+                                    <div class="social-frame__platform-name">
+                                        <!-- Facebook SVG icon -->
+                                        <svg viewBox="0 0 24 24" class="platform-icon" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="24" height="24" rx="6" fill="#010101" />
+                                            <path
+                                                d="M16.6 5.82a4.6 4.6 0 0 1-1.14-3.07h-2.95v13.22a2.77 2.77 0 0 1-2.77 2.42 2.77 2.77 0 0 1-2.77-2.77 2.77 2.77 0 0 1 2.77-2.77c.27 0 .53.04.77.11V9.89a5.74 5.74 0 0 0-.77-.05 5.72 5.72 0 0 0-5.72 5.72 5.72 5.72 0 0 0 5.72 5.72 5.72 5.72 0 0 0 5.72-5.72V9.58a7.56 7.56 0 0 0 4.41 1.4V8.02a4.6 4.6 0 0 1-3.28-2.2z"
+                                                fill="white" />
+                                            <path d="M16.6 5.82a4.6 4.6 0 0 0 3.28 2.2V5.06a4.6 4.6 0 0 1-3.28.76z"
+                                                fill="#EE1D52" />
+                                            <path
+                                                d="M9.74 15.56a2.77 2.77 0 0 0-2.77 2.77 2.77 2.77 0 0 0 2.77 2.77 2.77 2.77 0 0 0 2.77-2.42V4.46h2.95a4.6 4.6 0 0 0 .68 1.36 4.6 4.6 0 0 1-3.28-2.2v2.96a7.56 7.56 0 0 1-4.41-1.4v5.89c-.24-.07-.5-.11-.77-.11a5.72 5.72 0 0 0-5.72 5.72 5.72 5.72 0 0 0 5.72 5.72 5.72 5.72 0 0 0 5.72-5.72V9.58a7.56 7.56 0 0 0 4.41 1.4V7.02a4.6 4.6 0 0 1-3.28-2.2 4.6 4.6 0 0 1-1.14 1h-.01z"
+                                                fill="#69C9D0" opacity="0.6" />
+                                        </svg>
+                                        Facebook
+                                    </div>
+                                </div>
+                                <div class="social-frame__follow-btn social-frame__follow-btn--tt">Seguici</div>
+                            </div>
+                            <div class="social-frame__preview-label">Ultimi Reel & Video 🎥</div>
+                            <div class="social-frame__embed-hint">
+                                <span class="social-frame__embed-icon">🎵</span>
+                                <span>Tocca per visitare il profilo</span>
+                            </div>
+                        </a>
+                        <!-- Embed widget Facebook — decommentare quando si inserisce il widget -->
+                        <!--
+                        <div class="elfsight-app-YYYYYYYY"></div>
+                        -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Nota widget -->
+            <!-- <p class="socials-widget-note">
+                💡 <strong>Nota:</strong> Per mostrare i post direttamente qui puoi usare un widget gratuito come
+                <a href="https://elfsight.com" target="_blank" rel="noopener noreferrer">Elfsight</a> o
+                <a href="https://behold.so" target="_blank" rel="noopener noreferrer">Behold.so</a> —
+                ti spiego come in due minuti!
+            </p> -->
+        </section>
+
+    </main>
+
+    <!-- Language Switcher -->
     <div class="lang-switcher">
-
-        <!-- Bottone principale: mostra flag lingua corrente -->
         <button class="lang-main-btn" id="lang-main-toggle" onclick="toggleLangSwitcher()" title="Cambia lingua"
-            aria-label="Seleziona lingua">
-            🇮🇹
-        </button>
-
-        <!-- Menu a colonna -->
+            aria-label="Seleziona lingua">🇮🇹</button>
         <div class="lang-options" id="lang-column">
             <div class="lang-divider" data-lang="lang">Lingua</div>
-
             <button class="lang-btn active" data-lang-code="it" data-label="Italiano"
-                onclick="switchLanguage('it', '🇮🇹')" title="Italiano">
-                🇮🇹
-            </button>
-
+                onclick="switchLanguage('it', '🇮🇹')" title="Italiano">🇮🇹</button>
             <button class="lang-btn" data-lang-code="en" data-label="English" onclick="switchLanguage('en', '🇬🇧')"
-                title="English">
-                🇬🇧
-            </button>
-
+                title="English">🇬🇧</button>
             <button class="lang-btn" data-lang-code="es" data-label="Español" onclick="switchLanguage('es', '🇪🇸')"
-                title="Español">
-                🇪🇸
-            </button>
+                title="Español">🇪🇸</button>
         </div>
     </div>
 
-    <!-- Theme Switcher Compatto -->
+    <!-- Theme Switcher -->
     <div class="theme-switcher-compact">
-        <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle" title="Opzioni tema">
-            🎨
-        </button>
-
-        <!-- Menu a colonna (nascosto di default) -->
+        <button class="main-toggle" onclick="toggleThemeSwitcher()" id="main-theme-toggle"
+            title="Opzioni tema">🎨</button>
         <div class="theme-options-column" id="theme-column">
-            <!-- Divider -->
-            <div class="option-divider" data-lang="theme_label"></div>
-
-            <!-- Dark/Light Toggle -->
-            <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">
-                🌙
-            </button>
-
-            <!-- Divider -->
-            <div class="option-divider" data-lang="palette_label"></div>
-
-            <!-- Palette Buttons -->
+            <div class="option-divider" data-lang="theme_label">Tema</div>
+            <button onclick="toggleTheme()" id="theme-toggle" class="option-btn" title="Cambia tema">🌙</button>
+            <div class="option-divider" data-lang="palette_label">Palette</div>
             <button onclick="changePalette('human')" data-palette="human" class="option-btn active"
-                title="Modalità Umano">
-                👤
-            </button>
-            <button onclick="changePalette('dog')" data-palette="dog" class="option-btn" title="Visione Cane">
-                🐕
-            </button>
-            <button onclick="changePalette('cat')" data-palette="cat" class="option-btn" title="Visione Gatto">
-                🐱
-            </button>
-            <button onclick="changePalette('pet')" data-palette="pet" class="option-btn" title="Pet-Friendly">
-                🐾
-            </button>
+                title="Modalità Umano">👤</button>
+            <button onclick="changePalette('dog')" data-palette="dog" class="option-btn"
+                title="Visione Cane">🐕</button>
+            <button onclick="changePalette('cat')" data-palette="cat" class="option-btn"
+                title="Visione Gatto">🐱</button>
+            <button onclick="changePalette('pet')" data-palette="pet" class="option-btn"
+                title="Pet-Friendly">🐾</button>
         </div>
     </div>
 
     <script src="../js/script.js"></script>
     <script src="../js/booking.js"></script>
-
+    <script src="../js/contacts.js"></script>
 </body>
 
 </html>

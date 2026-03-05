@@ -386,7 +386,7 @@ const petData = [
     {
         nome: 'Axel',
         tipo: 'cane',
-        razza: 'Incrocio Barboncino e Maltese',
+        razza: 'Maltipoo',
         eta: '9 anni',
         sesso: 'Maschio',
         salute: 'Ottima',
@@ -428,7 +428,7 @@ const petData = [
         ],
         bio: 'Tommy è un curiosone, ama le persone ma un po` meno gli altri cani e quando si esce camminerebbe per ore! È molto intelligente, capisce ciò che gli viene detto ed è addestrato per la ricerca in superficie, un ricercatore!',
         emoji: '🐕',
-        foto: ''
+        foto: '../images/pet_photo/tommy.jpeg'
     },
     /* {
         nome: 'Schizzo & Lola',

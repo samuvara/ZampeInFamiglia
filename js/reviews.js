@@ -14,22 +14,6 @@ const GOOGLE_CONFIG = {
     reviewUrl: 'https://g.page/r/CcMXymL7834PEBM/review'
 };
 
-/* Dati mock — sostituiti automaticamente quando abiliti Google */
-const MOCK_REVIEWS = [
-    {
-        author: 'Evelin Guarna',
-        avatar: '🐕',
-        rating: 5,
-        text: 'Super super carini letizia e Samuel amano gli animali e si sente, il mio cucciolo (maltipoo) li adora entrambi, io da proprietaria posso dire che sono seri, puntuali ed affidabili, che non è poco. Li consiglio vivamente',
-        service: 'Dog Sitting',
-        date: '4 Marzo 2025'
-    },
-];
-
-/* ============================================
-   CLASSE PRINCIPALE
-   ============================================ */
-
 class ReviewsCarousel {
 
     constructor(containerId) {
@@ -52,7 +36,7 @@ class ReviewsCarousel {
         if (GOOGLE_CONFIG.enabled) {
             await this.loadGoogleReviews();
         } else {
-            this.reviews = MOCK_REVIEWS;
+            this.reviews = REVIEWS_DATA;
         }
 
         if (this.reviews.length === 0) {

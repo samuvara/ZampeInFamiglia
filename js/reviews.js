@@ -5,61 +5,25 @@
    1. MOCK (default): usa dati di esempio statici
    2. GOOGLE PLACES API: da abilitare configurando GOOGLE_CONFIG
 
-   Per attivare Google Places API:
-   - Crea profilo su Google Business Profile (gratuito)
-   - Ottieni chiave su console.cloud.google.com → abilita "Places API"
-   - Inserisci chiave e Place ID qui sotto
    ============================================ */
 
 const GOOGLE_CONFIG = {
-    enabled: false,
+    enabled: false, // da mettere a true se si vuole pagare l'API e sincronizzarlo ai servizi google
     apiKey: '',
-    placeId: '',
-    reviewUrl: 'https://g.page/r/CWcfDNK6hnlbEBM/review'
+    placeId: 'ChIJx0h0eN0xDgQRwxfKYvvzfg8',
+    reviewUrl: 'https://g.page/r/CcMXymL7834PEBM/review'
 };
 
 /* Dati mock — sostituiti automaticamente quando abiliti Google */
 const MOCK_REVIEWS = [
     {
-        author: 'Martina R.',
+        author: 'Evelin Guarna',
         avatar: '🐕',
         rating: 5,
-        text: 'Servizio fantastico! Il mio Labrador Briciola è tornato felicissimo. Le foto che ci hanno mandato durante la giornata ci hanno tranquillizzati subito. Lo rifaremo sicuramente!',
+        text: 'Super super carini letizia e Samuel amano gli animali e si sente, il mio cucciolo (maltipoo) li adora entrambi, io da proprietaria posso dire che sono seri, puntuali ed affidabili, che non è poco. Li consiglio vivamente',
         service: 'Dog Sitting',
-        date: 'Febbraio 2025'
+        date: '4 Marzo 2025'
     },
-    {
-        author: 'Luca e Sara T.',
-        avatar: '🐈',
-        rating: 5,
-        text: 'Affidabilità al 100%. La nostra gatta Mia, di solito molto diffidente, si è ambientata perfettamente. Siamo tornati dalle vacanze e l\'abbiamo trovata serena e coccolata.',
-        service: 'Cat Sitting',
-        date: 'Gennaio 2025'
-    },
-    {
-        author: 'Federica M.',
-        avatar: '🐾',
-        rating: 5,
-        text: 'Professionali, puntuali e soprattutto si vede che amano davvero gli animali. Il mio cane aspetta le passeggiate con loro con una gioia infinita!',
-        service: 'Passeggiate',
-        date: 'Marzo 2025'
-    },
-    {
-        author: 'Giorgio P.',
-        avatar: '🐶',
-        rating: 4,
-        text: 'Molto disponibili e flessibili con gli orari. Il mio Beagle è tornato stanco (nel senso buono!) e felice. Consiglio vivamente a chi lavora tutto il giorno.',
-        service: 'Dog Sitting',
-        date: 'Dicembre 2024'
-    },
-    {
-        author: 'Alessia C.',
-        avatar: '🐱',
-        rating: 5,
-        text: 'Ho lasciato i miei due gattini per una settimana e sono stati curati come se fossero di casa loro. Aggiornamenti costanti e tanto affetto. Non potevo scegliere meglio!',
-        service: 'Cat Sitting',
-        date: 'Novembre 2024'
-    }
 ];
 
 /* ============================================

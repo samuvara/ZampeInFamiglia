@@ -6,9 +6,7 @@ const adviceForPet = "<br><p><strong>ATTENZIONE! Dare sempre i riferimenti di ve
 const serviceDetails = {
     'passeggiata-30': {
         title: 'Passeggiata Breve - 30 minuti',
-        content: `
-            <p><strong>Perfetta per:</strong> Cani che necessitano di una breve pausa durante la giornata</p>
-            
+        content: ` 
             <h3>Cosa Include:</h3>
             <ul>
                 <li>Passeggiata di 30 minuti nel parco o nel quartiere</li>
@@ -16,6 +14,8 @@ const serviceDetails = {
                 <li>Foto e aggiornamenti durante la passeggiata</li>
                 <li>Attenzione personalizzata al tuo amico a quattro zampe</li>
             </ul>
+
+            <p><strong>Perfetta per</strong> cani che necessitano di una breve pausa durante la giornata</p><br>
             
             <h3>Note Importanti:</h3>
             <ul>
@@ -28,9 +28,7 @@ const serviceDetails = {
     },
     'passeggiata-60': {
         title: 'Passeggiata Standard - 1 ora',
-        content: `
-            <p><strong>Perfetta per:</strong> La maggior parte dei cani che necessitano di esercizio quotidiano</p>
-            
+        content: ` 
             <h3>Cosa Include:</h3>
             <ul>
                 <li>Passeggiata di 1 ora in ambienti sicuri e stimolanti</li>
@@ -39,6 +37,8 @@ const serviceDetails = {
                 <li>Foto e video del vostro amico durante l'attività</li>
                 <li>Report giornaliero via WhatsApp</li>
             </ul>
+
+            <p><strong>Perfetta per</strong> la maggior parte dei cani che necessitano di esercizio quotidiano</p><br>
             
             <h3>Note Importanti:</h3>
             <ul>
@@ -51,9 +51,7 @@ const serviceDetails = {
     },
     'passeggiata-90': {
         title: 'Passeggiata Lunga - 1 ora e 30 minuti',
-        content: `
-            <p><strong>Perfetta per:</strong> Cani ad alta energia che amano l'avventura</p>
-            
+        content: ` 
             <h3>Cosa Include:</h3>
             <ul>
                 <li>Passeggiata estesa di 1 ora e 30 minuti</li>
@@ -63,6 +61,8 @@ const serviceDetails = {
                 <li>Foto e video dell'avventura</li>
                 <li>Report dettagliato dell'attività</li>
             </ul>
+
+            <p><strong>Perfetta per</strong> cani ad alta energia che amano l'avventura</p><br>
             
             <h3>Note Importanti:</h3>
             <ul>
@@ -76,8 +76,6 @@ const serviceDetails = {
     'giorno': {
         title: 'Giorno Con Noi - 8 ore',
         content: `
-            <p><strong>Perfetto per:</strong> Quando devi lavorare o sei impegnato durante il giorno</p>
-            
             <h3>Cosa Include:</h3>
             <ul>
                 <li>Cura completa per 8 ore diurne</li>
@@ -87,6 +85,8 @@ const serviceDetails = {
                 <li>Somministrazione eventuali farmaci</li>
                 <li>Aggiornamenti foto/video durante la giornata</li>
             </ul>
+
+            <p><strong>Perfetto per</strong> quando devi lavorare o sei impegnato durante il giorno</p><br>
             
             <h3>Note Importanti:</h3>
             <ul>
@@ -100,26 +100,25 @@ const serviceDetails = {
     },
     'giorno-notte': {
         title: 'Giorno e Notte Con Noi - 24 ore',
-        content: `
-            <p><strong>Perfetto per:</strong> Weekend fuori, viaggi o impegni che durano tutto il giorno</p>
-            
+        content: ` 
             <h3>Cosa Include:</h3>
             <ul>
                 <li>Cura completa 24 ore su 24</li>
                 <li>Passeggiate multiple durante il giorno</li>
-                <li>Tutti i pasti secondo routine abituale</li>
+                <li>Tutti i pasti secondo routine abituale (da specificare)</li>
                 <li>Sistemazione notturna confortevole</li>
                 <li>Compagnia costante e attenzioni</li>
                 <li>Somministrazione farmaci se necessario</li>
                 <li>Aggiornamenti regolari con foto e video</li>
             </ul>
+
+            <p><strong>Perfetto per</strong> weekend fuori, viaggi o impegni che durano tutto il giorno</p><br>
             
             <h3>Note Importanti:</h3>
             <ul>
-                <li>Porta tutto il necessario (cibo, cuccia, giochi preferiti)</li>
+                <li>Porta tutto il necessario (cibo, cuccia, giochi preferiti, medicine)</li>
                 <li>Ambiente casalingo e accogliente</li>
-                <li>Check-in dalle 16:00, check-out entro le 10:00</li>
-                <li>Sconti per soggiorni di più giorni</li>
+                <li>Sconti per soggiorni da più di 3 giorni</li>
             </ul>
             ${adviceForPet}
         `
@@ -127,8 +126,6 @@ const serviceDetails = {
     'compagnia-dom': {
         title: 'Compagnia A Domicilio',
         content: `
-            <p><strong>Perfetto per:</strong> Pet che preferiscono restare nel loro ambiente familiare</p>
-            
             <h3>Cosa Include:</h3>
             <ul>
                 <li>Visita a domicilio di minimo 2 ore</li>
@@ -139,10 +136,11 @@ const serviceDetails = {
                 <li>Cura delle piante su richiesta</li>
                 <li>Ritiro posta/controllo casa</li>
             </ul>
+
+            <p><strong>Perfetto per</strong> pet che preferiscono restare nel loro ambiente familiare</p><br>
             
             <h3>Note Importanti:</h3>
             <ul>
-                <li>Tariffa oraria: €20/ora</li>
                 <li>Minimo 2 ore per visita</li>
                 <li>Ideale per gatti, cani anziani o animali ansiosi</li>
                 <li>Possibilità di visite multiple al giorno</li>

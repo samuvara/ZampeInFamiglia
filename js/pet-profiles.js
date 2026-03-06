@@ -418,7 +418,7 @@ const petData = [
         nome: 'Tommy',
         tipo: 'cane',
         razza: 'Barboncino',
-        eta: '10',
+        eta: '12',
         sesso: 'Maschio',
         salute: 'Perfetta salute',
         dieta: 'Dieta secca per senior',

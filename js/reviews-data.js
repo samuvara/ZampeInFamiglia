@@ -8,4 +8,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '4 Marzo 2025'
     },
+    {
+        author: 'Vanna Cialdoni',
+        avatar: '🐕',
+        rating: 5,
+        text: 'Mi sono affidata ai servizi di Letizia e Samuel durante una breve vacanza dove non potevo portare con me i miei amici pelosetti, loro venivano tutti i giorni a casa, due volte al giorno, davano loro da mangiare, gli facevano tante coccole e li portavano a passeggio, ero tranquilla perché mi mandavano anche foto e video dove vedevo i miei cagnolini felici, sono molto contenta, ero titubante perché sono cani di grossa taglia, ma hanno gestito tutto ottimamente',
+        service: 'Dog Sitting',
+        date: '6 Marzo 2025'
+    },
 ];

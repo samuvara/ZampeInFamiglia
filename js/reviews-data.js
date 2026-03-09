@@ -16,4 +16,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '6 Marzo 2025'
     },
+    {
+        author: 'Irene',
+        avatar: '🐈',
+        rating: 5,
+        text: 'Letizia e Samuel sono stati bravissimi e super affidabili, hanno guardato e provveduto alle mie due gatte durante un breve periodo in cui ho dovuto assentarmi e non ho potuto portarli con me. Mandano tante foto e video se richiesti con aggiornamenti tempestivi sui nostri animali, così mi sento tranquilla a lasciarli per qualche giorno! Sono garantite anche ore di gioco e svago, somministrazione del cibo e treats vari e pulizia lettiera.',
+        service: 'Cat Sitting',
+        date: '7 Marzo 2025'
+    },
 ];

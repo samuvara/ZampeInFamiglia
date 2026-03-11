@@ -1,11 +1,11 @@
 {
   "nav_home": "Inicio",
   "nav_services": "Servicios",
-  "nav_booking": "Reservas",
+  "nav_booking": "Disponibilidad",
   "nav_contacts": "Contactos",
 
   "zim_title": "Zampe in Famiglia",
-  "zim_title_booking": "Reserva - Zampe in Famiglia",
+  "zim_title_booking": "Disponibilidad - Zampe in Famiglia",
   "zim_title_services": "Servicios - Zampe in Famiglia",
   "zim_title_contacts": "Contactos - Zampe in Famiglia",
   "zim_subtitle": "Cuidado de mascotas de confianza para perros, gatos y animales domésticos",

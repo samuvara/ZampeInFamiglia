@@ -24,4 +24,12 @@ const REVIEWS_DATA = [
         service: 'Cat Sitting',
         date: '7 Marzo 2025'
     },
+    {
+        author: 'Viola Tenace',
+        avatar: '🐕',
+        rating: 5,
+        text: 'Ragazza fantastica! Mi ha aiutato a portare fuori la Zoe tutte le volte che ne avevo bisogno e mi mandava sempre tante foto. Grazie ancora !!',
+        service: 'Dog Sitting',
+        date: '10 Marzo 2025'
+    },
 ];

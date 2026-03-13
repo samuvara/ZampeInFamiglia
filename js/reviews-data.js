@@ -32,4 +32,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '10 Marzo 2025'
     },
+    {
+        author: 'Cristina Claudia Cottini',
+        avatar: '🐕',
+        rating: 5,
+        text: 'Letizia con Tommy e fantastica,poi sempre puntuale e disponibile,non mi ha mai detto di no con i turni che faccio poi.La consiglio.',
+        service: 'Dog Sitting',
+        date: '12 Marzo 2025'
+    },
 ];

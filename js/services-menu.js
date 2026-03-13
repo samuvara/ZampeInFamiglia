@@ -74,12 +74,12 @@ const serviceDetails = {
         `
     },
     'giorno': {
-        title: 'Giorno Con Noi - 8 ore',
+        title: 'Giorno Con Noi - Minimo 2 ore',
         content: `
             <h3>Cosa Include:</h3>
             <ul>
-                <li>Cura completa per 8 ore diurne</li>
-                <li>2-3 passeggiate durante la giornata</li>
+                <li>Cura completa per le ore richieste diurne</li>
+                <li>Diverse passeggiate durante la giornata</li>
                 <li>Pasti secondo le tue indicazioni</li>
                 <li>Tempo di gioco e relax</li>
                 <li>Somministrazione eventuali farmaci</li>

@@ -40,4 +40,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '12 Marzo 2025'
     },
+    {
+        author: 'Francesco Franciosa',
+        avatar: '🐶',
+        rating: 5,
+        text: 'Abbiamo lasciato il nostro barboncino toy a Samuel e Letizia e non potevamo fare scelta migliore. Fin dal primo momento si sono dimostrati estremamente premurosi, attenti e pieni di amore per gli animali. Durante tutto il periodo di custodia ci hanno tenuti aggiornati con foto e video meravigliosi del nostro piccolo, dove si percepisce chiaramente la passione e la dedizione che mettono in quello che fanno. Vedere il nostro cane sereno, giocare e ricevere tante attenzioni ci ha davvero tranquillizzati. Samuel e Letizia non fanno semplicemente i dog sitter: si prendono cura dei cani con affetto, come se fossero i loro. Consigliatissimi a chiunque voglia lasciare il proprio amico a quattro zampe in mani sicure, amorevoli e professionali. Grazie ancora di cuore!',
+        service: 'Dog Sitting',
+        date: '17 Marzo 2025'
+    },
 ];

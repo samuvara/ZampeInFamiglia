@@ -48,4 +48,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '17 Marzo 2025'
     },
+    {
+        author: 'laura guacci',
+        avatar: '🐶',
+        rating: 5,
+        text: 'Ho affidato la mia cagnolina a Letizia e a Samuel mentre da turista visitavo gli Uffizi e palazzo Pitti. Gentili, affettuosi, precisi e amanti dei cani. Li consiglio vivamente!',
+        service: 'Dog Sitting',
+        date: '22 Marzo 2025'
+    },
 ];

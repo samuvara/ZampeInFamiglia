@@ -118,7 +118,7 @@ class ReviewsCarousel {
         const count = this.getTotalCount();
 
         const cardsHTML = this.reviews.map(r => `
-            <div class="review-card">
+            <div class="review-card" data-hold-pause>
                 <div class="review-card-header">
                     <div class="review-avatar">${this._escape(r.avatar)}</div>
                     <div class="review-meta">
@@ -148,6 +148,8 @@ class ReviewsCarousel {
             <div class="reviews-progress">
                 <div class="reviews-progress-bar" id="reviewsProgressBar"></div>
             </div>
+
+            <div class="reviews-pause-hint">⏸ Puoi leggere con calma — rilascia per riprendere</div>
 
             <div class="reviews-carousel-wrapper" id="reviewsCarouselWrapper">
                 <div class="reviews-carousel-track" id="reviewsCarouselTrack">
@@ -200,6 +202,13 @@ class ReviewsCarousel {
     stopAutoPlay() {
         clearInterval(this.autoPlayInterval);
         this.autoPlayInterval = null;
+        if (this.progressBar) {
+            const frozen = getComputedStyle(this.progressBar).width;
+            const total = getComputedStyle(this.progressBar.parentElement).width;
+            const pct = (parseFloat(frozen) / parseFloat(total) * 100).toFixed(1);
+            this.progressBar.style.transition = 'none';
+            this.progressBar.style.width = pct + '%';
+        }
     }
 
     resetProgressBar() {
@@ -232,6 +241,38 @@ class ReviewsCarousel {
             }
         });
 
+        // --- Tieni premuto per mettere in pausa ---
+        this.container.addEventListener('mousedown', (e) => {
+            if (e.target.closest('[data-hold-pause]')) {
+                this.stopAutoPlay();
+                this._showPauseHint(true);
+            }
+        });
+        document.addEventListener('mouseup', () => {
+            if (!this.autoPlayInterval) {
+                this.startAutoPlay();
+                this._showPauseHint(false);
+            }
+        });
+        this.container.addEventListener('touchstart', (e) => {
+            if (e.target.closest('[data-hold-pause]')) {
+                this.stopAutoPlay();
+                this._showPauseHint(true);
+            }
+        }, { passive: true });
+        this.container.addEventListener('touchend', () => {
+            if (!this.autoPlayInterval) {
+                this.startAutoPlay();
+                this._showPauseHint(false);
+            }
+        }, { passive: true });
+        this.container.addEventListener('touchcancel', () => {
+            if (!this.autoPlayInterval) {
+                this.startAutoPlay();
+                this._showPauseHint(false);
+            }
+        }, { passive: true });
+
         const wrapper = document.getElementById('reviewsCarouselWrapper');
         if (wrapper) {
             wrapper.addEventListener('touchstart', (e) => {
@@ -247,6 +288,11 @@ class ReviewsCarousel {
             wrapper.addEventListener('mouseenter', () => this.stopAutoPlay());
             wrapper.addEventListener('mouseleave', () => this.startAutoPlay());
         }
+    }
+
+    _showPauseHint(visible) {
+        const hint = this.container.querySelector('.reviews-pause-hint');
+        if (hint) hint.classList.toggle('active', visible);
     }
 
     _escape(str) {

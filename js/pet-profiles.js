@@ -430,6 +430,34 @@ const petData = [
         emoji: '🐕',
         foto: '../images/pet_photo/tommy.jpeg'
     },
+    {
+        nome: 'Chloe',
+        tipo: 'cane',
+        razza: 'Barboncino Toy',
+        eta: '1',
+        sesso: 'Femmina',
+        salute: 'Perfetta salute',
+        dieta: '',
+        caratteristiche: ['Coccolosa', 'Iperattiva', 'Giocherellona'],
+        badges: [],
+        bio: 'Chloe è un piccolo uragano, ha tantissime energie e vuole sempre giocare! Ama molto le persone ed è una coccolona, a spasso poi non si fermerebbe mai!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/chloe.jpeg'
+    },
+    {
+        nome: 'Fiore',
+        tipo: 'cane',
+        razza: 'Setter',
+        eta: '10 circa',
+        sesso: 'Femmina',
+        salute: 'Perfetta salute',
+        dieta: '',
+        caratteristiche: ['Coccolosa', 'Golosona', 'Affettuosa'],
+        badges: [],
+        bio: 'Fiore è una patatona, si farebbe coccolare tutto il giorno ma c`è solo una cosa che le farebbe fare tutto... il cibo! È una golosona, ama farsi accarezzare dalle persone e per lei è sempre un buon momento per sedersi!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/fiore.jpeg'
+    },
     /* {
         nome: 'Schizzo & Lola',
         tipo: 'cane',

@@ -88,6 +88,20 @@
     user-select: none;
 }
 
+.reviews-pause-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    opacity: 0;
+    min-height: 1.2em;
+    transition: opacity 0.2s;
+    margin-bottom: 4px;
+}
+
+.reviews-pause-hint.active {
+    opacity: 1;
+}
+
 .review-card-header {
     display: flex;
     align-items: center;
@@ -283,7 +297,9 @@
 }
 
 @keyframes reviewsSpin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Progress bar autoplay */

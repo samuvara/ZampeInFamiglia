@@ -56,4 +56,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '22 Marzo 2025'
     },
+    {
+        author: 'Renata S',
+        avatar: '🐶',
+        rating: 5,
+        text: 'Anche la mia Lira è tornata tutta contenta dopo la passeggiata con i ragazzi. Bravissimi, molto attenti. Straconsiglio',
+        service: 'Dog Sitting',
+        date: '25 Marzo 2025'
+    },
 ];

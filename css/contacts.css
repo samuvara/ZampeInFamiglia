@@ -268,8 +268,40 @@
     box-shadow: var(--ct-shadow-hover);
 }
 
+.social-frame__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* importante per il ritaglio */
+}
+
+.social-frame__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* riempie bene il cerchio */
+}
+
 .social-frame--instagram { animation-delay: .1s; }
 .social-frame--facebook    { animation-delay: .2s; }
+
+.social-frame--facebook {
+    --primary-color: #1877F2;
+    --primary-hover: #166fe5;
+}
+
+.social-frame__avatar--fb {
+    background-color: #1877F2;
+    color: #fff;
+}
+
+.social-frame__follow-btn--fb {
+    background-color: #1877F2;
+    color: white;
+}
+
+.social-frame__follow-btn--fb:hover {
+    background-color: #166fe5;
+}
 
 /* Finta barra browser */
 .social-frame__header {

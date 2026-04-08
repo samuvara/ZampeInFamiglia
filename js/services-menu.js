@@ -22,6 +22,7 @@ const serviceDetails = {
                 <li>Orari flessibili da concordare</li>
                 <li>Possibilità di passeggiate di gruppo o individuali</li>
                 <li>Prezzi speciali per pacchetti settimanali</li>
+                <li>Rimborso spese dei viaggi oltre i 10km</li>
             </ul>
             ${adviceForPet}
         `
@@ -45,6 +46,7 @@ const serviceDetails = {
                 <li>Ideale per cani con media energia</li>
                 <li>Include tempo di gioco al parco</li>
                 <li>Sconti disponibili per abbonamenti mensili</li>
+                <li>Rimborso spese dei viaggi oltre i 10km</li>
             </ul>
             ${adviceForPet}
         `
@@ -69,6 +71,7 @@ const serviceDetails = {
                 <li>Consigliata per razze attive (Border Collie, Husky, ecc.)</li>
                 <li>Percorsi variati per stimolare il cane</li>
                 <li>Possibilità di attività specifiche su richiesta</li>
+                <li>Rimborso spese dei viaggi oltre i 10km</li>
             </ul>
             ${adviceForPet}
         `
@@ -141,10 +144,11 @@ const serviceDetails = {
             
             <h3>Note Importanti:</h3>
             <ul>
-                <li>Minimo 2 ore per visita</li>
+                <li>Minimo 2 ore divisibili nella giornata</li>
                 <li>Ideale per gatti, cani anziani o animali ansiosi</li>
                 <li>Possibilità di visite multiple al giorno</li>
                 <li>Aggiornamenti via foto dopo ogni visita</li>
+                <li>Rimborso spese dei viaggi oltre i 10km</li>
             </ul>
             ${adviceForPet}
         `

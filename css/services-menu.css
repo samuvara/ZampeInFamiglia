@@ -370,3 +370,47 @@
         justify-content: center;
     }
 }
+
+.download-pricelist-btn {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background: var(--primary);
+    color: var(--light);
+    backdrop-filter: blur(6px);
+    
+    padding: 10px 16px;
+    border-radius: 999px;
+    
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap; /* 🔥 forza una sola riga */
+    
+    text-decoration: none;
+    
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    
+    z-index: 9999;
+    
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    transition: all 0.2s ease;
+}
+
+.download-pricelist-btn:hover {
+    background: var(--secondary);
+}
+
+.download-pricelist-btn:active {
+    transform: translateX(-50%) scale(0.80);
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        padding-bottom: 80px;
+    }
+}

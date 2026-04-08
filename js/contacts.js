@@ -45,7 +45,7 @@ const CONTACTS_CONFIG = {
        ─────────────────────────────────────────────────── */
     facebook: {
         username: 'zampeinfamiglia_firenze',
-        url: 'https://www.facebook.com',
+        url: 'https://www.facebook.com/profile.php?id=61574328130205',
     },
 };
 

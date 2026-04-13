@@ -424,7 +424,8 @@ const petData = [
         dieta: 'Dieta secca per senior',
         caratteristiche: ['Coccoloso', 'Attivo', 'Curioso', 'Intelligente'],
         badges: [
-            { etichetta: '🔎 Ricercatore', tipo: 'mid-senior' }
+            { etichetta: '🔎 Ricercatore', tipo: 'mid-senior' },
+            { etichetta: '🫂 Sindrome Abbandono', tipo: 'special' }
         ],
         bio: 'Tommy è un curiosone, ama le persone ma un po` meno gli altri cani e quando si esce camminerebbe per ore! È molto intelligente, capisce ciò che gli viene detto ed è addestrato per la ricerca in superficie, un ricercatore!',
         emoji: '🐕',
@@ -457,6 +458,23 @@ const petData = [
         bio: 'Fiore è una patatona, si farebbe coccolare tutto il giorno ma c`è solo una cosa che le farebbe fare tutto... il cibo! È una golosona, ama farsi accarezzare dalle persone e per lei è sempre un buon momento per sedersi!',
         emoji: '🐕',
         foto: '../images/pet_photo/fiore.jpeg'
+    },
+    {
+        nome: 'Tommy',
+        tipo: 'cane',
+        razza: 'Labrador',
+        eta: '15 circa',
+        sesso: 'Maschio',
+        salute: 'Zoppica un po` e sente l`età',
+        dieta: '',
+        caratteristiche: ['Dormiglione', 'Coccoloso', 'Golosone'],
+        badges: [
+            { etichetta: '🌟 Speciale', tipo: 'special'},
+            { etichetta: '🦽 Problemi Motori', tipo: 'special'},
+        ],
+        bio: 'Tommy è un cucciolone, è dolcissimo e ha uno sguardo che intenerirebbe chiunque, purtroppo ha da poco visto il suo padrone andare in cielo ma è una forza della natura! Gli piace molto dormire e mangiare e quando siamo fuori non tornerebbe mai se non fosse che per l`età che ha si stanca dopo un po`',
+        emoji: '🐕',
+        foto: '../images/pet_photo/tommy_big.jpeg'
     },
     /* {
         nome: 'Schizzo & Lola',

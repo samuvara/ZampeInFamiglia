@@ -119,6 +119,10 @@
         {
             "src": "images/photo_gallery/tommy.jpeg",
             "caption": ""
+        },
+        {
+            "src": "images/pet_photo/tommy_big.jpeg",
+            "caption": ""
         }
     ]
 }

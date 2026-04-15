@@ -463,7 +463,7 @@ const petData = [
         nome: 'Tommy',
         tipo: 'cane',
         razza: 'Labrador',
-        eta: '15 circa',
+        eta: '12 circa',
         sesso: 'Maschio',
         salute: 'Zoppica un po` e sente l`età',
         dieta: '',
@@ -474,7 +474,7 @@ const petData = [
         ],
         bio: 'Tommy è un cucciolone, è dolcissimo e ha uno sguardo che intenerirebbe chiunque, purtroppo ha da poco visto il suo padrone andare in cielo ma è una forza della natura! Gli piace molto dormire e mangiare e quando siamo fuori non tornerebbe mai se non fosse che per l`età che ha si stanca dopo un po`',
         emoji: '🐕',
-        foto: '../images/pet_photo/tommy_big.jpeg'
+        foto: '../images/pet_photo/tommy_big_new.jpeg'
     },
     /* {
         nome: 'Schizzo & Lola',

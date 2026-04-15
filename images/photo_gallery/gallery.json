@@ -123,6 +123,10 @@
         {
             "src": "images/pet_photo/tommy_big.jpeg",
             "caption": ""
+        },
+        {
+            "src": "images/pet_photo/tommy_big_new.jpeg",
+            "caption": ""
         }
     ]
 }

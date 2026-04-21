@@ -64,4 +64,12 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '25 Marzo 2025'
     },
+    {
+        author: 'Fabio Bucciardini',
+        avatar: '🐶',
+        rating: 5,
+        text: 'Samuel e Letizia, sono due angeli! Appassionati, precisi e generosi. Hanno ospitato per una settimana Tommy il cane di un nostro caro, ma sono stati già famiglia per lui. In questo tempo hanno dimostrato grande generosità di cuore e professionalità. Se ci fosse anche una sesta stella io gliela darei!',
+        service: 'Dog Sitting',
+        date: '18 Aprile 2025'
+    },
 ];

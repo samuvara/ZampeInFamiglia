@@ -373,7 +373,7 @@ class PetProfiles {
     }
 
     _defaultEmoji(tipo) {
-        const map = { cane: '🐶', gatto: '🐱', coniglio: '🐰', criceto: '🐹', uccello: '🦜', tartaruga: '🐢' };
+        const map = { cane: '🐶', gatto: '🐱', pollo: '🐔' , coniglio: '🐰', criceto: '🐹', uccello: '🦜', tartaruga: '🐢' };
         return map[tipo] || '🐾';
     }
 }
@@ -476,22 +476,52 @@ const petData = [
         emoji: '🐕',
         foto: '../images/pet_photo/tommy_big_new.jpeg'
     },
-    /* {
-        nome: 'Schizzo & Lola',
+    {
+        nome: 'Willy',
         tipo: 'cane',
-        razza: 'Ragdoll',
-        eta: '6 anni',
-        sesso: 'Femmina',
-        salute: 'Ottima',
-        dieta: 'Solo cibo premium umido',
-        caratteristiche: ['Coccolona', 'Pigra', 'Silenziosa', 'Elegante'],
+        razza: 'Meticcio',
+        eta: '16',
+        sesso: 'Maschio',
+        salute: 'Sente l`età',
+        dieta: '',
+        caratteristiche: ['Camminatore', 'Curioso'],
         badges: [
-            { etichetta: '👑 Principessa', tipo: 'special' }
+            { etichetta: '🌟 Speciale', tipo: 'special'},
         ],
-        bio: 'Margherita ha deciso che il divano è suo per diritto divino. Non si discute.',
+        bio: 'Willy ha degli occhioni dolcissimi, vuole sempre uscire e quando stiamo fuori camminerebbe tutto il giorno! Sente un po` l`età perché spesso si vuole riposare ma è ancora un giovanotto!',
         emoji: '🐕',
-        foto: ''
-    }, */
+        foto: '../images/pet_photo/willy.jpeg'
+    },
+    {
+        nome: 'Maxi',
+        tipo: 'cane',
+        razza: 'Border Colliee',
+        eta: '7',
+        sesso: 'Maschio',
+        salute: 'Perfetta',
+        dieta: '',
+        caratteristiche: ['Iperattivo', 'Coccoloso', 'Giocherellone', 'Intelligentissimo'],
+        badges: [
+            { etichetta: '🕵️ Cinofilo', tipo: 'senior' },
+        ],
+        bio: 'Maxi è un cucciolone favoloso e super bravo, è intelligentissimo e quando siamo fuori è un piacere fare le passeggiate. E` in super forma e conosce anche il tedesco!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/maxi.jpeg'
+    },
+    {
+        nome: 'Mauricìo',
+        tipo: 'altro',
+        razza: 'Bionda Piemontese',
+        eta: '2 mesi e mezzo',
+        sesso: 'Maschio',
+        salute: 'Zoppica un po`',
+        dieta: 'Mangime',
+        caratteristiche: ['Cresta rossa'],
+        badges: [],
+        bio: 'Mauricio è un gallo di 2 mesi e mezzo abituato a stare in casa ma a cui piace stare fuori, ha una gallina come amica per cui sono inseparabili! Rimane con noi finchè il nuovo pollaio per lui e la sua amica non sarà pronto!',
+        emoji: '🐔',
+        foto: '../images/pet_photo/mauricio.jpeg'
+    },
 
     /* {
         nome: 'Fiocco',

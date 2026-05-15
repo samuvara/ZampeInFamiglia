@@ -522,6 +522,20 @@ const petData = [
         emoji: '🐔',
         foto: '../images/pet_photo/mauricio.jpeg'
     },
+    /* {
+        nome: 'Mirtilla',
+        tipo: 'cane',
+        razza: 'Cavalier King',
+        eta: '',
+        sesso: 'Femmina',
+        salute: 'Perfetta',
+        dieta: '',
+        caratteristiche: ['Iperattivo', 'Coccoloso', 'Giocherellone', 'Intelligentissimo'],
+        badges: [],
+        bio: '',
+        emoji: '🐕',
+        foto: ''
+    }, */
 
     /* {
         nome: 'Fiocco',

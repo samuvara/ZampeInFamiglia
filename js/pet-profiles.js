@@ -522,20 +522,20 @@ const petData = [
         emoji: '🐔',
         foto: '../images/pet_photo/mauricio.jpeg'
     },
-    /* {
+    {
         nome: 'Mirtilla',
         tipo: 'cane',
         razza: 'Cavalier King',
-        eta: '',
+        eta: '1 e mezzo',
         sesso: 'Femmina',
         salute: 'Perfetta',
-        dieta: '',
-        caratteristiche: ['Iperattivo', 'Coccoloso', 'Giocherellone', 'Intelligentissimo'],
+        dieta: 'secco',
+        caratteristiche: ['Ipercoccolosa', 'Cozza', 'Golosona' , 'Iperattiva'],
         badges: [],
-        bio: '',
+        bio: 'Mirtilla è una cagnolina a cui piacciono molto gli umani, qualsiasi persona incontra per strada gli fa le feste e chiede sempre coccole! è molto coccolosa e il suo nome è dovuto al suo essere golosissima di mirtilli! è educatissima ed abituata a stare in casa e le piace dormire sui cuscini.',
         emoji: '🐕',
-        foto: ''
-    }, */
+        foto: '../images/pet_photo/mirtilla.jpeg'
+    },
 
     /* {
         nome: 'Fiocco',

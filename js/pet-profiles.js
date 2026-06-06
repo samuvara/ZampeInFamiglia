@@ -19,14 +19,14 @@ class PetProfiles {
      * @param {string} modalSelector   - Selettore dell'overlay modal
      */
     constructor(gridSelector = '#profilesGrid',
-                filterSelector = '#profilesFilter',
-                modalSelector = '#petModal') {
+        filterSelector = '#profilesFilter',
+        modalSelector = '#petModal') {
 
-        this.grid   = document.querySelector(gridSelector);
+        this.grid = document.querySelector(gridSelector);
         this.filter = document.querySelector(filterSelector);
-        this.modal  = document.querySelector(modalSelector);
+        this.modal = document.querySelector(modalSelector);
         this.modalContent = document.querySelector('#modalContent');
-        this.modalClose   = document.querySelector('#modalClose');
+        this.modalClose = document.querySelector('#modalClose');
 
         this.currentFilter = 'all';
         this.pets = [];
@@ -101,10 +101,10 @@ class PetProfiles {
             .join('');
 
         const infoItems = [
-            { label: '🐾 Specie',   value: this._capitalize(pet.tipo)   },
-            { label: '🧬 Razza',    value: pet.razza  || '—'            },
-            { label: '🎂 Età',      value: pet.eta    || '—'            },
-            { label: '⚤ Sesso',     value: pet.sesso  || '—'            },
+            { label: '🐾 Specie', value: this._capitalize(pet.tipo) },
+            { label: '🧬 Razza', value: pet.razza || '—' },
+            { label: '🎂 Età', value: pet.eta || '—' },
+            { label: '⚤ Sesso', value: pet.sesso || '—' },
         ];
 
         const infoHTML = infoItems.map(i => `
@@ -124,7 +124,7 @@ class PetProfiles {
                 <div class="card-badge">${badgesHTML}</div>
             </div>
             <div class="card-body">
-                <div class="card-id">N° ${String(pet._id).padStart(3,'0')}</div>
+                <div class="card-id">N° ${String(pet._id).padStart(3, '0')}</div>
                 <h2 class="card-name">${pet.nome}</h2>
                 <div class="card-razza">${pet.razza || ''}</div>
                 <div class="card-info-grid">${infoHTML}</div>
@@ -157,12 +157,12 @@ class PetProfiles {
             .join('');
 
         const allInfo = [
-            { label: '🐾 Specie',   value: this._capitalize(pet.tipo)       },
-            { label: '🧬 Razza',    value: pet.razza    || '—'              },
-            { label: '🎂 Età',      value: pet.eta      || '—'              },
-            { label: '⚤ Sesso',     value: pet.sesso    || '—'              },
-            { label: '🩺 Salute',   value: pet.salute   || '—'              },
-            { label: '🍗 Dieta',    value: pet.dieta    || '—'              },
+            { label: '🐾 Specie', value: this._capitalize(pet.tipo) },
+            { label: '🧬 Razza', value: pet.razza || '—' },
+            { label: '🎂 Età', value: pet.eta || '—' },
+            { label: '⚤ Sesso', value: pet.sesso || '—' },
+            { label: '🩺 Salute', value: pet.salute || '—' },
+            { label: '🍗 Dieta', value: pet.dieta || '—' },
         ].filter(i => i.value !== '—');
 
         const infoHTML = allInfo.map(i => `
@@ -335,16 +335,16 @@ class PetProfiles {
         };
 
         petModal.addEventListener('touchstart', this._onTouchStart, { passive: true });
-        petModal.addEventListener('touchmove',  this._onTouchMove,  { passive: true });
-        petModal.addEventListener('touchend',   this._onTouchEnd);
+        petModal.addEventListener('touchmove', this._onTouchMove, { passive: true });
+        petModal.addEventListener('touchend', this._onTouchEnd);
     }
 
     _unbindSwipeToClose() {
         const petModal = document.querySelector('.pet-modal');
         if (!petModal || !this._onTouchStart) return;
         petModal.removeEventListener('touchstart', this._onTouchStart);
-        petModal.removeEventListener('touchmove',  this._onTouchMove);
-        petModal.removeEventListener('touchend',   this._onTouchEnd);
+        petModal.removeEventListener('touchmove', this._onTouchMove);
+        petModal.removeEventListener('touchend', this._onTouchEnd);
     }
 
     /* ─────────────────────────────────────────
@@ -373,7 +373,7 @@ class PetProfiles {
     }
 
     _defaultEmoji(tipo) {
-        const map = { cane: '🐶', gatto: '🐱', pollo: '🐔' , coniglio: '🐰', criceto: '🐹', uccello: '🦜', tartaruga: '🐢' };
+        const map = { cane: '🐶', gatto: '🐱', pollo: '🐔', coniglio: '🐰', criceto: '🐹', uccello: '🦜', tartaruga: '🐢' };
         return map[tipo] || '🐾';
     }
 }
@@ -408,7 +408,7 @@ const petData = [
         caratteristiche: ['Dolcissima', 'Ama le coccole', 'Non vede benissimo', 'Obbediente'],
         badges: [
             { etichetta: '👁️ Non vedente', tipo: 'blind' },
-            { etichetta: '🌟 Speciale',    tipo: 'special' }
+            { etichetta: '🌟 Speciale', tipo: 'special' }
         ],
         bio: 'Maggy ha avuto un incidente per cui ha parzialmente perso la visto ma non ha mai perso il sorriso. È molto vivace e coccolosa e come piace dire al padrone, è un Carro Armato!',
         emoji: '🐶',
@@ -469,8 +469,8 @@ const petData = [
         dieta: '',
         caratteristiche: ['Dormiglione', 'Coccoloso', 'Golosone'],
         badges: [
-            { etichetta: '🌟 Speciale', tipo: 'special'},
-            { etichetta: '🦽 Problemi Motori', tipo: 'special'},
+            { etichetta: '🌟 Speciale', tipo: 'special' },
+            { etichetta: '🦽 Problemi Motori', tipo: 'special' },
         ],
         bio: 'Tommy è un cucciolone, è dolcissimo e ha uno sguardo che intenerirebbe chiunque, purtroppo ha da poco visto il suo padrone andare in cielo ma è una forza della natura! Gli piace molto dormire e mangiare e quando siamo fuori non tornerebbe mai se non fosse che per l`età che ha si stanca dopo un po`',
         emoji: '🐕',
@@ -486,7 +486,7 @@ const petData = [
         dieta: '',
         caratteristiche: ['Camminatore', 'Curioso'],
         badges: [
-            { etichetta: '🌟 Speciale', tipo: 'special'},
+            { etichetta: '🌟 Speciale', tipo: 'special' },
         ],
         bio: 'Willy ha degli occhioni dolcissimi, vuole sempre uscire e quando stiamo fuori camminerebbe tutto il giorno! Sente un po` l`età perché spesso si vuole riposare ma è ancora un giovanotto!',
         emoji: '🐕',
@@ -530,11 +530,41 @@ const petData = [
         sesso: 'Femmina',
         salute: 'Perfetta',
         dieta: 'secco',
-        caratteristiche: ['Ipercoccolosa', 'Cozza', 'Golosona' , 'Iperattiva'],
+        caratteristiche: ['Ipercoccolosa', 'Cozza', 'Golosona', 'Iperattiva'],
         badges: [],
         bio: 'Mirtilla è una cagnolina a cui piacciono molto gli umani, qualsiasi persona incontra per strada gli fa le feste e chiede sempre coccole! è molto coccolosa e il suo nome è dovuto al suo essere golosissima di mirtilli! è educatissima ed abituata a stare in casa e le piace dormire sui cuscini.',
         emoji: '🐕',
         foto: '../images/pet_photo/mirtilla.jpeg'
+    },
+    {
+        nome: 'Leo & Sansa',
+        tipo: 'cane',
+        razza: 'Spitz di Pomerania',
+        eta: '',
+        sesso: 'Maschio e Femmina',
+        salute: 'Perfetta',
+        dieta: '',
+        caratteristiche: ['Iperattivi', 'Paurosi', 'Coccoloni'],
+        badges: [],
+        bio: 'Sansa e Leo sono due cagnolini iperattivi, sempre pronti ad abbaiare a qualcuno ma con uno sguardo dolcissimo, sono un po` diffidenti ma dopo poco si sono messi a giocare a più non posso con noi!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/sansaeleo.jpeg'
+    },
+    {
+        nome: 'Carla',
+        tipo: 'cane',
+        razza: 'Meticcio',
+        eta: '',
+        sesso: 'Femmina',
+        salute: '',
+        dieta: 'Spezzatino di carne',
+        caratteristiche: ['Golosa', 'Abitudinaria', 'Pigra', 'Dolce'],
+        badges: [
+            { etichetta: '🌟 Speciale', tipo: 'special' },
+        ],
+        bio: 'Carla proviene da un canile nel quale è stata abusata e per questo è un po` diffidente ma da tempo ormai è la regina della sua "nuova" casa! E` un po` pigra ma è molto dolce ed è una golosona!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/carla.jpeg'
     },
 
     /* {

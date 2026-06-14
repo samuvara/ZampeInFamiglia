@@ -15,8 +15,8 @@ const CONTACTS_CONFIG = {
        Esempio: '+39 055 1234567'
        ─────────────────────────────────────────────────── */
     phone: {
-        display: '+39 331 407 0796',
-        href: '+393314070796',
+        display: '+39 333 399 9783',
+        href: '+393333999783',
     },
 
     /* ─── WHATSAPP ───────────────────────────────────────
@@ -28,7 +28,7 @@ const CONTACTS_CONFIG = {
        Testo del messaggio preimpostato: modificalo in `message`
        ─────────────────────────────────────────────────── */
     whatsapp: {
-        number: '393314070796',
+        number: '393333999783',
         message: 'Ciao! Vorrei avere informazioni sui vostri servizi 🐾',
     },
 

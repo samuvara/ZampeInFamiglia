@@ -80,4 +80,36 @@ const REVIEWS_DATA = [
         service: 'Dog Sitting',
         date: '8 Maggio 2026'
     },
+    {
+        author: 'Paolo Laschi',
+        avatar: '🐔',
+        rating: 5,
+        text: `Un'eccellenza assoluta per ogni tipo di animale! Ho affidato ai ragazzi di "Zampe in Famiglia" il mio gallo Mauritius lo scorso mese in attesa che fosse pronto il nuovo pollaio e non potevo fare scelta migliore. Gestire un gallo non è da tutti: richiede attenzioni specifiche, sensibilità e una comprensione profonda delle sue abitudini. I ragazzi si sono dimostrati straordinariamente bravi, competenti e super premurosi fin dal primo giorno. Mi hanno aggiornato costantemente, dandomi una serenità incredibile. Si vede che fanno questo lavoro con un amore e una passione rari. Mauritius è tornato a casa sereno e coccolato. Consigliatissimi per chiunque cerchi una seconda famiglia per i propri animali, anche quelli più "insoliti"! Grazie di cuore ragazzi.`,
+        service: 'Pet Sitting',
+        date: '4 Giugno 2026'
+    },
+    {
+        author: 'Alessia Petracchi',
+        avatar: '🐶',
+        rating: 5,
+        text: 'Abbiamo affidato a questi due straordinari ragazzi per 5 giorni Willy il nostro canino vecchietto di ben 16 anni con le sue problematiche e fissazioni dovute all’ età e con il suo caratterino per nulla semplice …Letizia e Samuel si sono presi cura di Willy nel migliore dei modi… si sono adeguati a tutte le sue esigenze , lo hanno straviziato e ci hanno aggiornato continuamente più volte al giorno … che dire li ho trovati per caso ma non potevo trovare di meglio… non finirò mai di ringraziarli… ❤️🐶',
+        service: 'Dog Sitting',
+        date: '8 Giugno 2026'
+    },
+    {
+        author: 'Miriana Romanazzo',
+        avatar: '🐶',
+        rating: 5,
+        text: `Esperienza fantastica! Abbiamo affidato la nostra cagnolina a Samuel e Letizia per tre giorni e sono stati eccezionali. Super dolci, attenti e premurosi, ci hanno mandato molti video e foto per tutta la durata del soggiorno. L'hanno amata e curata come se fosse il loro cane. Cinque stelle meritatissime!`,
+        service: 'Dog Sitting',
+        date: '10 Giugno 2026'
+    },
+    {
+        author: 'Janette Monzillo',
+        avatar: '🐶',
+        rating: 5,
+        text: `Per esigenze lavorative abbiamo dovuto lasciare il nostro cane per un giorno e, cercando su internet, abbiamo scoperto Zampe in Famiglia, ma soprattutto Samuel e Letizia: due ragazzi affidabili e autenticamente amanti degli animali. Vasco è tornato a casa sereno e rilassato e, considerando che è un levriero timoroso e diffidente con gli estranei, non è affatto un risultato scontato. Felici di aver trovato un punto di riferimento al quale affidare Vasco quando non può venire con noi. Consigliatissimi!`,
+        service: 'Dog Sitting',
+        date: '15 Giugno 2026'
+    },
 ];

@@ -495,7 +495,7 @@ const petData = [
     {
         nome: 'Maxi',
         tipo: 'cane',
-        razza: 'Border Colliee',
+        razza: 'Border Collie',
         eta: '7',
         sesso: 'Maschio',
         salute: 'Perfetta',
@@ -585,7 +585,7 @@ const petData = [
     {
         nome: 'Vasco',
         tipo: 'cane',
-        razza: 'Cane Balbo',
+        razza: 'Cane Galgo',
         eta: '7 circa',
         sesso: 'Maschio',
         salute: 'Perfetta',
@@ -596,7 +596,7 @@ const petData = [
         foto: '../images/pet_photo/vasco.jpeg'
     },
     {
-        nome: 'Alice, Ada e Agatha',
+        nome: 'Alice, Ada e Agata',
         tipo: 'cane',
         razza: 'Barboncini',
         eta: '',
@@ -612,7 +612,7 @@ const petData = [
         nome: 'Alvarino',
         tipo: 'altro',
         razza: 'Bionda Piemontese',
-        eta: '5 mesi',
+        eta: '4 mesi',
         sesso: 'Maschio',
         salute: 'Perfetta',
         dieta: 'Mangime',
@@ -622,6 +622,33 @@ const petData = [
         emoji: '🐔',
         foto: '../images/pet_photo/alvarino.jpeg'
     },
+    {
+        nome: 'Cecco',
+        tipo: 'cane',
+        razza: 'Labrador',
+        eta: '10',
+        sesso: 'Maschio',
+        salute: 'Sovrappeso',
+        dieta: 'Tutto',
+        caratteristiche: ['Mangione', 'Coccoloso', 'Dolce'],
+        bio: 'Cecco è un labrador che ha un solo problema, mangerebbe in continuazione e qualsiasi cosa! Per il resto, è un cane super educato, bravo, ubbidiente e molto coccoloso. Lo abbiamo conosciuto per il battesimo del suo fratellino umano ed è stato bravissimo!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/cecco.jpeg'
+    },
+    {
+        nome: 'Bord',
+        tipo: 'cane',
+        razza: 'Meticcio',
+        eta: '5',
+        sesso: 'Maschio',
+        salute: 'Perfetta',
+        dieta: 'Mista',
+        caratteristiche: ['Supercoccolone', 'Iperattivo', 'Affettuoso', 'Giocherellone'],
+        bio: 'Bord è il cane più affettuoso e dolce che abbiamo mai conosciuto, già al primo incontro ci ha riempito di bacini e faceva le feste come se fosse sempre stato con noi. Si è abituato subito alla nostra routine nonostante sia stato solo due giorni! Ama giocare ed il contatto fisico con le persone, quando poi è in un giardino è proprio nel suo habitat!',
+        emoji: '🐕',
+        foto: '../images/pet_photo/bord.jpeg'
+    },
+
 
     /* {
         nome: 'Fiocco',

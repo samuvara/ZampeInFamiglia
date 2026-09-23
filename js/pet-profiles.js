@@ -443,7 +443,7 @@ const petData = [
         badges: [],
         bio: 'Chloe è un piccolo uragano, ha tantissime energie e vuole sempre giocare! Ama molto le persone ed è una coccolona, a spasso poi non si fermerebbe mai!',
         emoji: '🐕',
-        foto: '../images/pet_photo/chloe.jpeg'
+        foto: '../images/pet_photo/chloe_dog.jpeg'
     },
     {
         nome: 'Fiore',
@@ -776,6 +776,34 @@ const petData = [
         foto: '../images/pet_photo/chloe.jpeg'
     },
     {
+        nome: 'Seoul',
+        tipo: 'gatto',
+        razza: 'Rosso Europeo',
+        eta: '2 anni',
+        sesso: 'Maschio',
+        salute: 'Perfetta',
+        dieta: 'Umido e secco',
+        caratteristiche: ['Giocherellone', 'Mordace', 'Demonietto'],
+        badges: [],
+        bio: 'Seoul è un gattino che ama giocare e mordere le mani, è iperattivo e non si stanca mai di giocare! Spesso si mette ad osservare dalla finestra ed ogni tanto cerca anche le coccole!',
+        emoji: '🐈',
+        foto: '../images/pet_photo/seoul.jpg'
+    },
+    {
+        nome: 'Semola',
+        tipo: 'gatto',
+        razza: 'Rosso Europeo',
+        eta: '5 mesi',
+        sesso: 'Maschio',
+        salute: 'Perfetta',
+        dieta: 'Secco',
+        caratteristiche: ['Pasticcere', 'Coccolone', 'Giocherellone'],
+        badges: [],
+        bio: 'Semola ci ha accolti dal primo giorno con amore cercando sempre tante coccole ancora prima del cibo! Ci ha mostrato sin da subito le sue doti da panettiere facendoci il pane addosso ogni volta che ci vedeva. Gli piace giocare ma attenzione ai lacci, sono tutti suoi...',
+        emoji: '🐈',
+        foto: '../images/pet_photo/semola.jpg'
+    },
+    {
         nome: 'Merlino e Circe',
         tipo: 'gatto',
         razza: 'Persiano e British Long Hair',
@@ -788,6 +816,48 @@ const petData = [
         bio: 'Merlino è un gatto persiano di 8 anni ha sofferto di cistite in passato ma ora sta meglio! Dormiglione, se fosse per lui passerebbe tutto il giorno sul letto, ma e tanto coccoloso e ci fa sapere sempre quello che pensa miagolandocelo. Circe è una gatta british longhair di 9 anni, un po` diffidente ma super coccolosa adora farsi le unghie sugli oggetti!',
         emoji: '🐈',
         foto: '../images/pet_photo/merlinocirce.jpeg'
+    },
+    {
+        nome: 'Tigro e Nina',
+        tipo: 'gatto',
+        razza: 'Tigrati',
+        eta: '7 e 8',
+        sesso: 'Maschio e Femmina',
+        salute: 'Ottima',
+        dieta: 'Misto',
+        caratteristiche: ['Dormiglioni', 'Coccolosoni', 'Curiosoni', 'Esploratori'],
+        badges: [],
+        bio: "Tigro e Nina si sono ambientati quasi subito in casa andando in men che non si dica all'esplorazione, trovando svariati posti in cui poi sono rimasti e hanno usato come cuccia per il resto del tempo (sopra la maglietta di Letizia ci stava sempre Nina mentre sopra i panni sportivi di Samuel ci stava sempre Tigro).",
+        emoji: '🐈',
+        foto: '../images/pet_photo/tigroenina.jpg'
+    },
+    {
+        nome: 'Spillo',
+        tipo: 'cane',
+        razza: 'Meticcio',
+        eta: '3 anni',
+        sesso: 'Maschio',
+        salute: 'Ottima',
+        dieta: 'Misto',
+        caratteristiche: ['Coccolone', 'Cozzetta', 'Fifone'],
+        badges: [],
+        bio: "Spilletto è un fifone che ha paura di un sacco di cose anche se un motivi vero non c'è, appena entrato aveva paura anche di Samuel ma poco dopo gli è diventato una cozza che lo seguiva ovunque. Abituato a dormire con noi, la mattina si avvicinava per prendersi le coccole e in generale, le cercava sempre!",
+        emoji: '🐕',
+        foto: '../images/pet_photo/spillo.jpg'
+    },
+    {
+        nome: 'Honey',
+        tipo: 'cane',
+        razza: 'Barboncino Toy',
+        eta: '7 anni',
+        sesso: 'Maschio',
+        salute: 'Ottima',
+        dieta: '',
+        caratteristiche: ['Coccolosone', 'Giocherellone', 'Diffidente'],
+        badges: [],
+        bio: "Honey è un piccolo barboncino a cui piace tantissimo giocare con la pallina e ricevere delle coccole!",
+        emoji: '🐕',
+        foto: '../images/pet_photo/honey.jpg'
     },
 
 

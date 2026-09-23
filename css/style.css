@@ -1046,6 +1046,84 @@ header::before {
 }
 
 /* ============================================
+   ALERT BANNER - CHIUSURA NOVEMBRE
+   ============================================ */
+
+.alert-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    color: white;
+    padding: 1.1rem 1.6rem;
+    border-radius: 16px;
+    margin: 2rem auto 0;
+    max-width: 600px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.9s ease-out 0.4s both;
+    position: relative;
+}
+
+.alert-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    animation: pawFloat 4s ease-in-out infinite;
+}
+
+.alert-text {
+    flex: 1;
+    z-index: 1;
+}
+
+.alert-text strong {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: 1.7rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+}
+
+.alert-text p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.95;
+    margin: 0;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .alert-banner {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        padding: 1rem 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .alert-icon {
+        font-size: 1.6rem;
+    }
+
+    .alert-text strong {
+        font-size: 1.4rem;
+    }
+
+    .alert-text p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .alert-banner {
+        gap: 0.6rem;
+    }
+
+    .alert-text strong {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================================
    CALENDAR WRAPPER
    ============================================ */
 .calendar-wrapper {
